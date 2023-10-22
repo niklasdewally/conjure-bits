@@ -5,15 +5,15 @@
 PATH_TO_MINION =../../minion
 
 LIBMINION = $(PATH_TO_MINION)/bin/libminion.a
-MINION_SRC=$(PATH_TO_MINION)/minion
 BUILD_SRC=$(PATH_TO_MINION)/bin/src
+SRC=$(PATH_TO_MINION)/minion/
 MAKE_FLAGS =$(PATH_TO_MINION)/bin/Makeflags.mak
 
 include $(MAKE_FLAGS)
 
 
 xyz: xyz.cpp $(PATH_TO_MINION)/bin/libminion.a
-	g++ $(FLAGS) xyz.cpp $(LIBMINION) -o xyz -I$(BUILD_SRC) -I$(MINION_SRC)
+	g++ $(FLAGS) xyz.cpp $(LIBMINION) -o xyz -I$(BUILD_SRC) -I$(SRC)
 
 .PHONY: $(LIBMINION)
 $(LIBMINION):

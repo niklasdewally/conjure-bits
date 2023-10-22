@@ -1,4 +1,4 @@
-#include "../minion/libwrapper.h"
+#include "libwrapper.h"
 #include "inputfile_parse/CSPSpec.h"
 #include "inputfile_parse/InputVariableDef.h"
 #include "solver.h"
@@ -9,9 +9,10 @@ using namespace ProbSpec;
 
 
 bool callback(void) {
-  std::cout << "Call me" << endl;
+  std::cout << "Callback!" << endl;
   return true;
 }
+
 int main(int argc, char *argv[])
 {
 
@@ -45,25 +46,21 @@ int main(int argc, char *argv[])
   newVar(instance,"y",VAR_DISCRETE,domain);
   newVar(instance,"z",VAR_DISCRETE,domain);
 
+  Var x = instance.vars.getSymbol("x");
+  Var y = instance.vars.getSymbol("y");
+  Var z = instance.vars.getSymbol("z");
 
   // **SEARCH**
   
   // PRINT
-  instance.print_matrix.push_back({instance.vars.getSymbol("x")});
-  instance.print_matrix.push_back({instance.vars.getSymbol("y")});
-  instance.print_matrix.push_back({instance.vars.getSymbol("z")});
+  instance.print_matrix.push_back({x});
+  instance.print_matrix.push_back({y});
+  instance.print_matrix.push_back({z});
 
 
   // VARORDER STATIC [x,y,z]
-  
-  std::vector<Var> searchVars;
-  searchVars.push_back(instance.vars.getSymbol("x"));
-  searchVars.push_back(instance.vars.getSymbol("y"));
-  searchVars.push_back(instance.vars.getSymbol("z"));
-
   bool find_one_sol = false;
-
-  SearchOrder searchOrder(searchVars, VarOrderEnum::ORDER_STATIC,find_one_sol);
+  SearchOrder searchOrder({x,y,z}, VarOrderEnum::ORDER_STATIC,find_one_sol);
   instance.searchOrder.push_back(searchOrder);
 
 
@@ -72,11 +69,12 @@ int main(int argc, char *argv[])
   ConstraintBlob leq(lib_getConstraint(ConstraintType::CT_LEQSUM));
   ConstraintBlob geq(lib_getConstraint(ConstraintType::CT_GEQSUM));
 
-  leq.vars.push_back({instance.vars.getSymbol("x"),instance.vars.getSymbol("y")});
-  leq.vars.push_back({instance.vars.getSymbol("z")});
+  
+  leq.vars.push_back({x,y});
+  leq.vars.push_back({z});
                       
-  geq.vars.push_back({instance.vars.getSymbol("x"),instance.vars.getSymbol("y")});
-  geq.vars.push_back({instance.vars.getSymbol("z")});
+  geq.vars.push_back({x,y});
+  geq.vars.push_back({z});
 
   instance.constraints.push_back(leq);
   instance.constraints.push_back(geq);

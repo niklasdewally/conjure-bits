@@ -7,9 +7,13 @@
 
 using namespace ProbSpec;
 
+extern Globals* globals;
 
 bool callback(void) {
   std::cout << "Callback!" << endl;
+  std::cout << "x: " << globals->state_m->getPrintMatrix()[0][0].assignedValue() << endl;
+  std::cout << "y: " << globals->state_m->getPrintMatrix()[1][0].assignedValue() << endl;
+  std::cout << "z: " << globals->state_m->getPrintMatrix()[2][0].assignedValue() << endl;
   return true;
 }
 

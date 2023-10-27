@@ -20,25 +20,6 @@ int main(int argc, char *argv[])
   SearchMethod args;
   CSPInstance instance;
 
-  // encode the following model
-  /*
-   * MINION 3
-   * **VARIABLES**
-   * DISCRETE x #
-   * {1..3}
-   * DISCRETE y #
-   * {2..4}
-   * DISCRETE z #
-   * {1..5}
-   * **SEARCH**
-   * PRINT[[x],[y],[z]]
-   * VARORDER STATIC [x, y, z]
-   * **CONSTRAINTS**
-   * sumleq([x,y,z],4)
-   * ineq(x, y, -1)
-   * **EOF**
-   */
-
   std::vector<DomainInt> domainx = {1,3};
   std::vector<DomainInt> domainy = {2,4};
   std::vector<DomainInt> domainz = {1,5};
@@ -73,15 +54,21 @@ int main(int argc, char *argv[])
   ConstraintBlob ineq(lib_getConstraint(ConstraintType::CT_INEQ));
 
   
-  leq.vars.push_back({x,y});
-  leq.constants.push_back({4});
+  // leq: [var] var
+  leq.vars.push_back({x,y,z});
+  leq.vars.push_back({constantAsVar(4)});
                       
-  //ineq.vars.push_back({x});
-  //ineq.vars.push_back({y});
-  //ineq.constants.push_back({-1});
+  geq.vars.push_back({x,y,z});
+  geq.vars.push_back({constantAsVar(4)});
 
+  // ineq: var var const
+  ineq.vars.push_back({x});
+  ineq.vars.push_back({y});
+  ineq.constants.push_back({-1});
+
+  instance.constraints.push_back(geq);
   instance.constraints.push_back(leq);
-  //instance.constraints.push_back(ineq);
+  instance.constraints.push_back(ineq);
 
   for (int i=0;i<5;i++){
     printf("\n========== RUN %d ==========\n",i);

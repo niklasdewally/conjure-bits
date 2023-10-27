@@ -1,0 +1,5 @@
+--std=gnu++11
+-xc++
+-DLIBMINION
+-I../../minion/minion
+-I../../minion/bin/src

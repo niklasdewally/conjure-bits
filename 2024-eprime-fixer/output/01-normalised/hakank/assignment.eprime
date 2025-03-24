@@ -1,4 +1,14 @@
 language ESSENCE' 1.0
+letting r be 4
+letting rows be domain int(1..r)
+letting c be 5
+letting cols be domain int(1..c)
+letting cost be [[14, 5, 8, 7, 15], 
+[2, 12, 6, 5, 3], 
+[7, 8, 3, 9, 7], 
+[2, 4, 6, 10, 1]]
+find x : matrix indexed by [rows,cols] of int(0..1)
+find total_cost : int(0..1000)
 minimising total_cost
 such that
 (forAll i : rows . (((sum j : cols . x[i, j]))=1)),

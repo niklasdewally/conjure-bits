@@ -1,0 +1,34 @@
+language ESSENCE' 1.0
+
+$
+$ data from van Hentenryck
+$
+letting n be 5
+letting rankWomen be
+[[1, 2, 4, 3, 5],
+ [3, 5, 1, 2, 4],
+ [5, 4, 2, 1, 3],
+ [1, 3, 5, 4, 2],
+ [4, 2, 3, 5, 1]
+]
+
+letting rankMen  be
+ [[5, 1, 2, 4, 3],
+  [4, 1, 3, 2, 5],
+  [5, 3, 2, 4, 1],
+  [1, 5, 4, 3, 2],
+  [4, 3, 2, 1, 5]
+ ]
+
+
+$ given n : int(..)
+letting people be domain int(1..n)
+$ given rankWomen : matrix indexed by [people,people] of people
+$ given rankMen : matrix indexed by [people,people] of people
+find wife : matrix indexed by [people] of people
+find husband : matrix indexed by [people] of people
+such that
+(forAll m : people . (husband[wife[m]]=m)),
+(forAll w : people . (wife[husband[w]]=w)),
+(forAll m : people . (forAll o : people . (((rankMen[m, o]<rankMen[m, wife[m]])) -> (rankWomen[o, husband[o]]<rankWomen[o, m])))),
+(forAll w : people . (forAll o : people . (((rankWomen[w, o]<rankWomen[w, husband[w]])) -> (rankMen[o, wife[o]]<rankMen[o, w]))))

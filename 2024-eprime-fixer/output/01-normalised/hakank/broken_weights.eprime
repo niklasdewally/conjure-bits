@@ -1,4 +1,9 @@
 language ESSENCE' 1.0
+letting n be 4
+letting m be 40
+letting range be domain int(1..n)
+find weights : matrix indexed by [range] of int(1..m)
+find x : matrix indexed by [int(1..m),range] of int((-1)..1)
 such that
 (forAll i : int(2..n) . (weights[(i - 1)]<=weights[i])),
 (sum(weights)=m),

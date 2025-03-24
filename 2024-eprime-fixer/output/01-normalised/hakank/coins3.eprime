@@ -1,4 +1,11 @@
 language ESSENCE' 1.0
+letting n be 6
+letting range be domain int(1..n)
+letting coins be domain int(1..99)
+letting variables be [1, 2, 5, 10, 25, 50]
+find x : matrix indexed by [range] of int(0..99)
+find tmp : matrix indexed by [coins,range] of int(0..99)
+find num_coins : int(0..(n * 99))
 minimising num_coins
 such that
 (num_coins=sum(x)),

@@ -1,4 +1,7 @@
 language ESSENCE' 1.0
+letting n be 8
+letting dom be domain int(1..n)
+find x : matrix indexed by [dom] of dom
 such that
 allDiff(x),
 allDiff([(x[i] + i)|i : dom, () ;int(1..)]),

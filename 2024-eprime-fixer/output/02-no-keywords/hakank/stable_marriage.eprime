@@ -1,4 +1,10 @@
 language ESSENCE' 1.0
+given n : int(..)
+letting people be domain int(1..n)
+given rankWomen : matrix indexed by [people,people] of people
+given rankMen : matrix indexed by [people,people] of people
+find wife : matrix indexed by [people] of people
+find husband : matrix indexed by [people] of people
 such that
 (forAll m : people . (husband[wife[m]]=m)),
 (forAll w : people . (wife[husband[w]]=w)),

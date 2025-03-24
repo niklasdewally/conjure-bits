@@ -1,3 +1,6 @@
 language ESSENCE' 1.0
+letting n be 10
+letting num_boxes be 5
+find schur : matrix indexed by [int(1..n)] of int(1..num_boxes)
 such that
 (forAll i : int(1..n) . (forAll j : int(1..n) . (forAll k : int(1..n) . ((((i + j)=k)) -> (!((((schur[i]=schur[j])) /\ ((schur[j]=schur[k])))))))))

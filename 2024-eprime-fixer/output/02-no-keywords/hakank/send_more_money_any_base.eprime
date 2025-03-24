@@ -1,4 +1,13 @@
 language ESSENCE' 1.0
+letting base be 10
+find s : int(0..(base - 1))
+find e : int(0..(base - 1))
+find n : int(0..(base - 1))
+find d : int(0..(base - 1))
+find m : int(0..(base - 1))
+find o : int(0..(base - 1))
+find r : int(0..(base - 1))
+find y : int(0..(base - 1))
 such that
 allDiff([s, e, n, d, m, o, r, y]),
 (0<s),

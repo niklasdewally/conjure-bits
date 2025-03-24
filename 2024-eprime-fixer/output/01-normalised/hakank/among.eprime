@@ -1,4 +1,9 @@
 language ESSENCE' 1.0
+letting n be 5
+letting s_size be 3
+letting s :matrix indexed by [int(1..s_size)] of int(1..8) be [1, 5, 8]
+find x : matrix indexed by [int(1..n)] of int(1..8)
+find a : int(0..n)
 such that
 (a=3),
 (a=(sum i : int(1..n) . ((sum j : int(1..s_size) . (x[i]=s[j])))))

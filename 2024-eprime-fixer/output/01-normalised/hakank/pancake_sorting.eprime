@@ -1,4 +1,10 @@
 language ESSENCE' 1.0
+given n : int(1..20)
+given stack : matrix indexed by [int(1..n)] of int(1..n)
+letting progress_size be (((((5 * n) + 5))/3))
+find positions : matrix indexed by [int(1..(progress_size - 1))] of int(0..n)
+find progress : matrix indexed by [int(1..progress_size),int(1..n)] of int(1..n)
+find solution_pos : int(1..progress_size)
 minimising solution_pos
 such that
 (forAll j : int(1..n) . (progress[1, j]=stack[j])),

@@ -1,4 +1,11 @@
 language ESSENCE' 1.0
+letting n be 4
+letting range be domain int(1..n)
+letting duration be [4, 1, 2, 1]
+letting before_tasks be [[4, 3], 
+[2, 1]]
+find begin : matrix indexed by [range] of int(9..17)
+find end : matrix indexed by [range] of int(9..17)
 such that
 (forAll i : range . (end[i]=(begin[i] + duration[i]))),
 (forAll i : range . (forAll j : range . (((i<j)) -> (((((begin[i] + duration[i])<=begin[j])) \/ (((begin[j] + duration[j])<=begin[i]))))))),

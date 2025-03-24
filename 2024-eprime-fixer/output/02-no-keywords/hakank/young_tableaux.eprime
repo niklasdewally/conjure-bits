@@ -1,4 +1,7 @@
 language ESSENCE' 1.0
+letting n be 4
+find x : matrix indexed by [int(1..n),int(1..n)] of int(1..(n + 1))
+find p : matrix indexed by [int(1..n)] of int(0..(n + 1))
 such that
 (forAll i : int(1..n) . (1=(sum j : int(1..n) . (sum k : int(1..n) . (x[j, k]=i))))),
 (x[1, 1]=1),

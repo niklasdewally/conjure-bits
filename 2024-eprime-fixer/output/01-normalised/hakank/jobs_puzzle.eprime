@@ -1,4 +1,19 @@
 language ESSENCE' 1.0
+letting Roberta be 1
+letting Thelma be 2
+letting Steve be 3
+letting Pete be 4
+letting n be 4
+letting job be domain int(1..n)
+find chef : job
+find guard : job
+find nurse : job
+find clerk : job
+find police_officer : job
+find teacher : job
+find actor : job
+find boxer : job
+find jobs : matrix indexed by [int(1..8)] of job
 such that
 (jobs[1]=chef),
 (jobs[2]=guard),

@@ -1,4 +1,16 @@
 language ESSENCE' 1.0
+letting n be 8
+letting m be [[0, 1, 0, 1, 0, 0, 1, 1], 
+[1, 0, 0, 1, 0, 0, 0, 0], 
+[0, 0, 0, 0, 1, 1, 0, 0], 
+[1, 1, 0, 0, 0, 0, 1, 0], 
+[0, 0, 1, 0, 0, 1, 1, 0], 
+[0, 0, 1, 0, 1, 0, 1, 1], 
+[1, 0, 0, 1, 1, 1, 0, 1], 
+[1, 0, 0, 0, 0, 1, 1, 0]]
+find X : matrix indexed by [int(1..n)] of int(0..1)
+find Y : matrix indexed by [int(1..n)] of int(0..1)
+find c_armies : int(0..n)
 minimising c_armies
 such that
 (c_armies=(sum i : int(1..n) . (X[i] + Y[i]))),

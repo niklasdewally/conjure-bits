@@ -1,4 +1,14 @@
 language ESSENCE' 1.0
+letting num_groups be 6
+letting num_senators be 10
+letting belongs :matrix indexed by [int(1..num_groups),int(1..num_senators)] of int(0..1) be [[1, 1, 1, 1, 1, 0, 0, 0, 0, 0], 
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1], 
+[0, 1, 1, 0, 0, 0, 0, 1, 1, 1], 
+[1, 0, 0, 0, 1, 1, 1, 0, 0, 0], 
+[0, 0, 1, 1, 1, 1, 1, 0, 1, 0], 
+[1, 1, 0, 0, 0, 0, 0, 1, 0, 1]]
+find x : matrix indexed by [int(1..num_senators)] of int(0..1)
+find z : int(1..num_senators)
 minimising z
 such that
 (forAll i : int(1..num_groups) . (1<=((sum j : int(1..num_senators) . (x[j] * belongs[i, j]))))),

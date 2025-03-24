@@ -1,4 +1,15 @@
 language ESSENCE' 1.0
+letting n be 7
+letting range be domain int(1..n)
+letting preferences be [[0, 0, 0, 0, 1, 1, 0], 
+[1, 0, 0, 0, 1, 0, 0], 
+[0, 0, 0, 0, 0, 0, 0], 
+[0, 0, 1, 0, 0, 1, 0], 
+[0, 0, 0, 0, 0, 0, 0], 
+[0, 0, 0, 0, 0, 0, 0], 
+[0, 0, 1, 1, 0, 0, 0]]
+find positions : matrix indexed by [range] of range
+find z : int(0..(n * n))
 maximising z
 such that
 allDiff(positions),

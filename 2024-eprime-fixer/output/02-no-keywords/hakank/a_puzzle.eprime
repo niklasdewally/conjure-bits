@@ -1,4 +1,17 @@
 language ESSENCE' 1.0
+letting R be domain int(0..9)
+find x0 : R
+find x1 : R
+find x2 : R
+find x3 : R
+find x4 : R
+find x5 : R
+find x6 : R
+find x7 : R
+find x8 : R
+find x9 : R
+find all : matrix indexed by [int(1..10)] of R
+find x : R
 such that
 (all[1]=x0),
 (all[2]=x1),

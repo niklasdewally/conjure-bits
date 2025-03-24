@@ -1,4 +1,15 @@
 language ESSENCE' 1.0
+letting n be 6
+letting numColors be 4
+letting num_countries be 6
+letting countries be domain int(1..num_countries)
+letting connections be [[0, 0, 1, 1, 1, 1], 
+[0, 0, 0, 1, 0, 0], 
+[1, 0, 0, 1, 1, 0], 
+[1, 1, 1, 0, 1, 1], 
+[1, 0, 1, 1, 0, 0], 
+[1, 0, 0, 1, 0, 0]]
+find color : matrix indexed by [int(1..n)] of int(1..numColors)
 such that
 (forAll i : countries . (forAll j : countries . ((((i<j) /\ (connections[i, j]=1))) -> (color[i]!=color[j])))),
 (color[1]=1)

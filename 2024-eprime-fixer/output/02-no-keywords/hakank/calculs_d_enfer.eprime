@@ -1,4 +1,35 @@
 language ESSENCE' 1.0
+letting N be 26
+letting R be domain int((-100)..100)
+find a : R
+find b : R
+find c : R
+find d : R
+find e : R
+find f : R
+find g : R
+find h : R
+find i : R
+find j : R
+find k : R
+find l : R
+find m : R
+find n : R
+find o : R
+find p : R
+find q : R
+find r : R
+find s : R
+find t : R
+find u : R
+find v : R
+find w : R
+find x : R
+find y : R
+find z : R
+find A : matrix indexed by [int(1..N)] of R
+find A_abs : matrix indexed by [int(1..N)] of int(0..N)
+find a_max : int(0..N)
 minimising a_max
 such that
 allDiff(A),

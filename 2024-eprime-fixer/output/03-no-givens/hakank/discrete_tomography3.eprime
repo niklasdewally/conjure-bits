@@ -1,0 +1,16 @@
+language ESSENCE' 1.0
+letting r be 3
+letting c be 11
+letting row_sums be [11,5,4]
+letting col_sums be [3,2,3,1,1,1,1,2,3,2,1]
+
+$ given r : int(..)
+letting rows be domain int(1..r)
+$ given c : int(..)
+letting cols be domain int(1..c)
+$ given row_sums : matrix indexed by [rows] of int(0..)
+$ given col_sums : matrix indexed by [cols] of int(0..)
+find x : matrix indexed by [rows,cols] of int(0..1)
+such that
+(forAll i : rows . (row_sums[i]=(sum j : cols . x[i, j]))),
+(forAll j : cols . (col_sums[j]=(sum i : rows . x[i, j])))

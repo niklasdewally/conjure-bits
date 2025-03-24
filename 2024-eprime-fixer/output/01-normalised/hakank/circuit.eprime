@@ -1,4 +1,8 @@
 language ESSENCE' 1.0
+letting n be 5
+letting range be domain int(1..n)
+find x : matrix indexed by [range] of range
+find z : matrix indexed by [range] of range
 such that
 allDiff(x),
 allDiff(z),

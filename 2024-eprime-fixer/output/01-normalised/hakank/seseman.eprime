@@ -1,4 +1,14 @@
 language ESSENCE' 1.0
+letting rowsum be 9
+letting totalsum be 24
+find a : int(0..10000)
+find b : int(0..10000)
+find c : int(0..10000)
+find d : int(0..10000)
+find e : int(0..10000)
+find f : int(0..10000)
+find g : int(0..10000)
+find h : int(0..10000)
 such that
 (((a + b) + c)=rowsum),
 (((a + d) + f)=rowsum),

@@ -1,4 +1,21 @@
 language ESSENCE' 1.0
+letting n be 4
+letting Jack be 1
+letting Bill be 2
+letting Paul be 3
+letting Frank be 4
+letting R be domain int(1..n)
+find Green : R
+find Clubb : R
+find Sands : R
+find Carter : R
+find last_name : matrix indexed by [int(1..n)] of R
+find cook : R
+find maintenance_man : R
+find clerk : R
+find caddy : R
+find job : matrix indexed by [int(1..n)] of R
+find score : matrix indexed by [int(1..n)] of int(70..85)
 such that
 (last_name[1]=Green),
 (last_name[2]=Clubb),

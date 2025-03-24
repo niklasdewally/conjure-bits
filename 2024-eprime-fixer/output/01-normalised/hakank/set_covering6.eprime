@@ -1,4 +1,13 @@
 language ESSENCE' 1.0
+letting num_t be 4
+letting num_b be 6
+letting t_costs :matrix indexed by [int(1..num_t)] of int(0..100) be [50, 20, 15, 15]
+letting mat :matrix indexed by [int(1..num_t),int(1..num_b)] of int(0..1) be [[1, 1, 1, 1, 1, 1], 
+[0, 1, 1, 1, 1, 1], 
+[1, 1, 1, 0, 0, 0], 
+[0, 0, 0, 1, 1, 1]]
+find x : matrix indexed by [int(1..num_t)] of int(0..1)
+find total_cost : int(0..100)
 minimising total_cost
 such that
 (forAll j : int(1..num_b) . (1<=((sum i : int(1..num_t) . (x[i] * mat[i, j]))))),

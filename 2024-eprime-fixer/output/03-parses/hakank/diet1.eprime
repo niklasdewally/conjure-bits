@@ -1,0 +1,20 @@
+language ESSENCE' 1.0
+letting n be 4
+letting nrange_ be domain int(1..n)
+letting p be 4
+letting prange_ be domain int(1..p)
+letting price be [50, 20, 30, 80]
+letting tlimits be [500, 6, 10, 8]
+letting calories be [400, 200, 150, 500]
+letting chocolate be [3, 2, 0, 0]
+letting sugar be [2, 2, 4, 4]
+letting fat be [2, 4, 1, 5]
+find x : matrix indexed by [prange_] of int(0..1000)
+find cost : int(0..10000)
+minimising cost
+such that
+(cost=(sum i : prange_ . (x[i] * price[i]))),
+(tlimits[1]<=((sum i : nrange_ . (x[i] * calories[i])))),
+(tlimits[2]<=((sum i : nrange_ . (x[i] * chocolate[i])))),
+(tlimits[3]<=((sum i : nrange_ . (x[i] * sugar[i])))),
+(tlimits[4]<=((sum i : nrange_ . (x[i] * fat[i]))))

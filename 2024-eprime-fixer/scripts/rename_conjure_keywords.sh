@@ -14,5 +14,5 @@ gsed -f - "$1" <<SED_SCRIPT
   s/sequence/sequence_/g
   s/subset/subset_/g
   s/supset/supset_/g
-  s/; *int(1..)//g
+  s/; *int(1\.\.)//g
 SED_SCRIPT

@@ -1,0 +1,10 @@
+language ESSENCE' 1.0
+letting k be 11
+letting positionDomain be domain int(1..(2 * k))
+where FailWhenFalse((((k%4)=0) \/ ((k%4)=3)))
+find solution : matrix indexed by [positionDomain] of int(1..k)
+find position : matrix indexed by [positionDomain] of positionDomain
+such that
+(forAll i : int(1..k) . (((position[(i + k)]=((position[i] + i) + 1)) /\ (solution[position[i]]=i)) /\ (solution[position[(k + i)]]=i))),
+allDiff(position),
+(position[(2 * k)]<position[1])

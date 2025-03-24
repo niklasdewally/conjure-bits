@@ -1,0 +1,76 @@
+language ESSENCE' 1.0
+letting N be 26
+letting R be domain int((-100)..100)
+find a : R
+find b : R
+find c : R
+find d : R
+find e : R
+find f : R
+find g : R
+find h : R
+find i : R
+find j : R
+find k : R
+find l : R
+find m : R
+find n : R
+find o : R
+find p : R
+find q : R
+find r : R
+find s : R
+find t : R
+find u : R
+find v : R
+find w : R
+find x : R
+find y : R
+find z : R
+find A : matrix indexed by [int(1..N)] of R
+find A_abs : matrix indexed by [int(1..N)] of int(0..N)
+find a_max : int(0..N)
+minimising a_max
+such that
+allDiff(A),
+(A[1]=a),
+(A[2]=b),
+(A[3]=c),
+(A[4]=d),
+(A[5]=e),
+(A[6]=f),
+(A[7]=g),
+(A[8]=h),
+(A[9]=i),
+(A[10]=j),
+(A[11]=k),
+(A[12]=l),
+(A[13]=m),
+(A[14]=n),
+(A[15]=o),
+(A[16]=p),
+(A[17]=q),
+(A[18]=r),
+(A[19]=s),
+(A[20]=t),
+(A[21]=u),
+(A[22]=v),
+(A[23]=w),
+(A[24]=x),
+(A[25]=y),
+(A[26]=z),
+(forAll i2 : int(1..N) . (A_abs[i2]=|A[i2]|)),
+(forAll i2 : int(1..N) . (A_abs[i2]<=a_max)),
+((((z + e) + r) + o)=0),
+(((o + n) + e)=1),
+(((t + w) + o)=2),
+(((((t + h) + r) + e) + e)=3),
+((((f + o) + u) + r)=4),
+((((f + i) + v) + e)=5),
+(((s + i) + x)=6),
+(((((s + e) + v) + e) + n)=7),
+(((((e + i) + g) + h) + t)=8),
+((((n + i) + n) + e)=9),
+(((t + e) + n)=10),
+((((((e + l) + e) + v) + e) + n)=11),
+(((((t + w) + e) + l) + f)=12)

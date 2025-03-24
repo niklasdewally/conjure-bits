@@ -1,0 +1,31 @@
+$$ param file: hakank/survo_puzzle3.param
+
+$ http://en.wikipedia.org/wiki/Survo_Puzzle, third example
+$ difficulty 150 ("open puzzle", i.e. no hints)
+$ It's an unique solution.
+language ESSENCE' 1.0
+letting r be 3
+letting c be 4
+letting rowsums be [24,15,39]
+letting colsums be [21,10,18,29]
+letting game be
+   [
+     [0, 0, 0, 0],
+     [0, 0, 0, 0],
+     [0, 0, 0, 0]
+   ]
+$$ model file: hakank/survo_puzzle.eprime
+
+$ given r : int(..)
+$ given c : int(..)
+$ given rowsums : matrix indexed by [int(1..r)] of int(1..100000)
+$ given colsums : matrix indexed by [int(1..c)] of int(1..100000)
+$ given game : matrix indexed by [int(1..r),int(1..c)] of int(0..(r * c))
+letting rows be domain int(1..r)
+letting cols be domain int(1..c)
+find x : matrix indexed by [rows,cols] of int(1..(r * c))
+such that
+allDiff(flatten(x)),
+(forAll i : rows . (forAll j : cols . ((0<game[i, j]) -> (x[i, j]=game[i, j])))),
+(forAll i : rows . (((sum j : cols . x[i, j]))=rowsums[i])),
+(forAll j : cols . (((sum i : rows . x[i, j]))=colsums[j]))

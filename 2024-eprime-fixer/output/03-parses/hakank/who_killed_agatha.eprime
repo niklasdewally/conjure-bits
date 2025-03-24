@@ -1,0 +1,23 @@
+language ESSENCE' 1.0
+letting n be 3
+letting Range be domain int(1..n)
+letting agatha be 1
+letting butler be 2
+letting charles be 3
+find the_killer : Range
+find the_victim : Range
+find hates : matrix indexed by [Range,Range] of int(0..1)
+find richer : matrix indexed by [Range,Range] of int(0..1)
+such that
+(hates[the_killer, the_victim]=1),
+(richer[the_killer, the_victim]=0),
+(forAll i : Range . (richer[i, i]=0)),
+(forAll i : Range . (forAll j : Range . (((i!=j)) -> (((richer[i, j]=1) <-> (richer[j, i]=0)))))),
+(forAll i : Range . ((hates[agatha, i]=1) -> (hates[charles, i]=0))),
+(hates[agatha, charles]=1),
+(hates[agatha, agatha]=1),
+(hates[agatha, butler]=0),
+(forAll i : Range . ((richer[i, agatha]=0) -> (hates[butler, i]=1))),
+(forAll i : Range . ((hates[agatha, i]=1) -> (hates[butler, i]=1))),
+(forAll i : Range . (((sum j : Range . hates[i, j]))<=2)),
+(the_victim=agatha)

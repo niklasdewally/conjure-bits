@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+letting n be 5
+letting nrange_ be domain int(1..n)
+letting m be 10
+letting mrange_ be domain int(1..m)
+letting weights be [80, 82, 83, 84, 85, 86, 87, 88, 90, 91]
+find bales : matrix indexed by [nrange_] of int(0..50)
+find b1 : matrix indexed by [mrange_] of nrange_
+find b2 : matrix indexed by [mrange_] of nrange_
+such that
+(forAll w : int(1..10) . ((b1[w]<b2[w]) /\ ((bales[b1[w]] + bales[b2[w]])=weights[w]))),
+(forAll w : int(1..(n - 1)) . (bales[w]<=bales[(w + 1)]))

@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+letting n be 12
+letting range_ be domain int(1..n)
+letting range_2 be domain int(1..(n - 1))
+find x : matrix indexed by [range_] of range_
+find diffs : matrix indexed by [range_2] of range_2
+such that
+allDiff(diffs),
+allDiff(x),
+(forAll k : range_2 . (diffs[k]=|(x[(k + 1)] - x[k])|)),
+(x[1]<x[(n - 1)]),
+(diffs[1]<diffs[2])

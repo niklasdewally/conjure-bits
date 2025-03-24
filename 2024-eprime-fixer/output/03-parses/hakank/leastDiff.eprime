@@ -1,0 +1,20 @@
+language ESSENCE' 1.0
+letting LD be domain int(0..9)
+letting RES be domain int(0..200000)
+find a : LD
+find b : LD
+find c : LD
+find d : LD
+find e : LD
+find f : LD
+find g : LD
+find h : LD
+find i : LD
+find j : LD
+find res : RES
+minimising res
+such that
+allDiff([a, b, c, d, e, f, g, h, i, j]),
+(res=(((((((10000 * a) + (1000 * b)) + (100 * c)) + (10 * d)) + e)) - ((((((10000 * f) + (1000 * g)) + (100 * h)) + (10 * i)) + j)))),
+(0<a),
+(0<f)

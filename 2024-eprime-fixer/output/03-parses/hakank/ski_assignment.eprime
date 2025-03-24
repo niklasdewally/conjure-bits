@@ -1,0 +1,11 @@
+language ESSENCE' 1.0
+letting num_skis be 6
+letting num_skiers be 5
+letting ski_heights be [1, 2, 5, 7, 13, 21]
+letting skier_heights be [3, 4, 7, 11, 18]
+find x : matrix indexed by [int(1..num_skiers)] of int(1..num_skis)
+find z : int(0..1000)
+minimising z
+such that
+(z=(sum i : int(1..num_skiers) . |(ski_heights[x[i]] - skier_heights[i])|)),
+allDiff(x)

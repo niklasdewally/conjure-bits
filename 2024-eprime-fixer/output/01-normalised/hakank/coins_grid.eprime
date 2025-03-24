@@ -6,5 +6,5 @@ find x : matrix indexed by [int(1..n),int(1..n)] of int(0..1)
 find z : int(0..1000000)
 minimising z
 such that
-(forAll i : range . ((sum(x[i,int(..)])=c) /\ (sum(x[int(..),i])=c))),
+(forAll i : range . ((sum(x[i,..])=c) /\ (sum(x[..,i])=c))),
 (z=(sum i : range . (sum j : range . (x[i, j] * ((|(i - j)| * |(i - j)|))))))

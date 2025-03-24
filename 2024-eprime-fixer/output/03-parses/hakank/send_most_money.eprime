@@ -1,0 +1,17 @@
+language ESSENCE' 1.0
+find s : int(0..9)
+find e : int(0..9)
+find n : int(0..9)
+find d : int(0..9)
+find m : int(0..9)
+find o : int(0..9)
+find t : int(0..9)
+find y : int(0..9)
+find money : int(0..100000)
+maximising money
+such that
+allDiff([s, e, n, d, m, o, t, y]),
+(((((((((1000 * s) + (100 * e)) + (10 * n)) + d) + (1000 * m)) + (100 * o)) + (10 * s)) + t)=money),
+(money=(((((10000 * m) + (1000 * o)) + (100 * n)) + (10 * e)) + y)),
+(0<s),
+(0<m)

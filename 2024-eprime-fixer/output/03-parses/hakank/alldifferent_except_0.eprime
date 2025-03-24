@@ -1,0 +1,9 @@
+language ESSENCE' 1.0
+letting n be 6
+find x : matrix indexed by [int(1..n)] of int(0..9)
+find z : int(0..10000)
+such that
+(z=((sum i : int(1..n) . (x[i]=0)))),
+(z=2),
+(forAll i : int(1..n) . (forAll j : int(1..n) . ((((i!=j)) -> ((((((x[i]!=0)) /\ ((x[j]!=0)))) -> ((x[i]!=x[j])))))))),
+(forAll i : int(2..n) . (x[(i - 1)]<=x[i]))

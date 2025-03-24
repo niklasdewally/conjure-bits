@@ -8,5 +8,5 @@ find solution_pos : int(1..progress_size_)
 minimising solution_pos
 such that
 (forAll j : int(1..n) . (progress[1, j]=stack[j])),
-(forAll i : int(2..progress_size_) . (allDiff(progress[i,int(..)]) /\ (exists pos : int(2..n) . ((positions[(i - 1)]=pos) /\ (forAll j : int(1..pos) . ((progress[i, ((pos - j) + 1)]=progress[(i - 1), j]) /\ (forAll j2 : int((pos + 1)..n) . (progress[i, j2]=progress[(i - 1), j2])))))))),
+(forAll i : int(2..progress_size_) . (allDiff(progress[i,..]) /\ (exists pos : int(2..n) . ((positions[(i - 1)]=pos) /\ (forAll j : int(1..pos) . ((progress[i, ((pos - j) + 1)]=progress[(i - 1), j]) /\ (forAll j2 : int((pos + 1)..n) . (progress[i, j2]=progress[(i - 1), j2])))))))),
 (exists pos : int(2..progress_size_) . ((solution_pos=pos) /\ (forAll i : int(1..n) . ((progress[pos, i]=i) /\ (forAll p : int((pos + 1)..progress_size_) . (positions[(p - 1)]=positions[(p - 2)]))))))

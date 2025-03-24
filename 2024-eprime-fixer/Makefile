@@ -1,7 +1,7 @@
 
 RENAME_KEYWORDS := scripts/rename_conjure_keywords.sh
 SUBSTITUTE_PARAMS:= scripts/substituteparams.sh
-
+CHECK_CONJURE_PARSES := scripts/check_conjure_parses.sh
 
 INPUTS := $(shell find input -iname '*.eprime')
 INPUT_PARAMS := $(shell find input -iname '*.param')
@@ -12,10 +12,11 @@ NORMALISED_PARAMS := $(INPUT_PARAMS:input/%.param=output/01-normalised/%.param)
 NO_KEYWORDS := $(INPUTS:input/%.eprime=output/02-no-keywords/%.eprime)
 NO_KEYWORDS_PARAMS := $(INPUT_PARAMS:input/%.param=output/02-no-keywords/%.param)
 
+
 ## The entry-point
 
 .PHONY: all 
-all: $(NORMALISED) $(NORMALISED_PARAMS) $(NO_KEYWORDS) $(NO_KEYWORDS_PARAMS) output/03-no-givens/.timestamp
+all: $(NORMALISED) $(NORMALISED_PARAMS) $(NO_KEYWORDS) $(NO_KEYWORDS_PARAMS) output/03-no-givens/.timestamp output/03-noparses/.timestamp output/03-parses/.timestamp
 
 ## Rules
 
@@ -50,7 +51,13 @@ output/03-no-givens/.timestamp: $(NO_KEYWORDS)  $(NO_KEYWORDS_PARAMS) $(SUBSTITU
 	touch $@
 	
 
-## Folders
+
+output/03-noparses/.timestamp output/03-parses/.timestamp: output/03-no-givens/.timestamp $(CHECK_CONJURE_PARSES)
+	mkdir -p output/03-noparses
+	mkdir -p output/03-parses
+	$(CHECK_CONJURE_PARSES)
+	touch	output/03-parses/.timestamp
+	touch	output/03-noparses/.timestamp
 
 
 ## Phonies

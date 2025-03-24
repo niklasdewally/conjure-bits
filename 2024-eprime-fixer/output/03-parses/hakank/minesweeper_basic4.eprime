@@ -1,0 +1,22 @@
+$$ param file: hakank/minesweeper_basic4.param
+
+language ESSENCE' 1.0
+$ Basic position
+letting r be 2
+letting c be 4
+letting game be [
+     [-1,-1,-1,-1],
+     [1,1,1,1]
+  ]
+$$ model file: hakank/minesweeper.eprime
+
+$ given r : int(..)
+$ given c : int(..)
+$ given game : matrix indexed by [int(1..r),int(1..c)] of int((-1)..)
+letting X be (-1)
+letting AB be domain int((-1)..1)
+letting rows be domain int(1..r)
+letting cols be domain int(1..c)
+find mines : matrix indexed by [rows,cols] of int(0..1)
+such that
+(forAll i : rows . (forAll j : cols . (((((X<game[i, j]) -> (mines[i, j]=0))) /\ (((mines[i, j]=1) -> (game[i, j]=X)))) /\ (((X<game[i, j]) -> (game[i, j]=sum([mines[(i + a), (j + b)]|a : AB, b : AB, (((((0<(i + a)) /\ (0<(j + b))) /\ ((i + a)<=r)) /\ ((j + b)<=c))) ])))))))

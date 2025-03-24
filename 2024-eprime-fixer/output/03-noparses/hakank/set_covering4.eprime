@@ -1,0 +1,20 @@
+language ESSENCE' 1.0
+letting num_alternatives be 10
+letting num_objects be 8
+letting costs :matrix indexed by [int(1..num_alternatives)] of int(1..20) be [19, 16, 18, 13, 15, 19, 15, 17, 16, 15]
+letting alt :matrix indexed by [int(1..num_alternatives),int(1..num_objects)] of int(0..1) be [[1, 0, 0, 0, 0, 1, 0, 0], 
+[0, 1, 0, 0, 0, 1, 0, 1], 
+[1, 0, 0, 1, 0, 0, 1, 0], 
+[0, 1, 1, 0, 1, 0, 0, 0], 
+[0, 1, 0, 0, 1, 0, 0, 0], 
+[0, 1, 1, 0, 0, 0, 0, 0], 
+[0, 1, 1, 1, 0, 0, 0, 0], 
+[0, 0, 0, 1, 1, 0, 0, 1], 
+[0, 0, 1, 0, 0, 1, 0, 1], 
+[1, 0, 0, 0, 0, 1, 1, 0]]
+find x : matrix indexed by [int(1..num_alternatives)] of int(0..1)
+find z : int(0..1000)
+minimising z
+such that
+(forAll j : int(1..num_objects) . (((sum i : int(1..num_alternatives) . (x[i] * alt[i, j])))=1)),
+(z=(sum i : int(1..num_alternatives) . (x[i] * costs[i])))

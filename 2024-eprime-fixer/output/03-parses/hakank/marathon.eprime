@@ -1,0 +1,24 @@
+language ESSENCE' 1.0
+letting n be 6
+find Dominique : int(1..n)
+find Ignace : int(1..n)
+find Naren : int(1..n)
+find Olivier : int(1..n)
+find Philippe : int(1..n)
+find Pascal : int(1..n)
+such that
+allDiff([Dominique, Ignace, Naren, Olivier, Philippe, Pascal]),
+(Olivier!=n),
+(Dominique<Naren),
+(Dominique<Olivier),
+(Pascal<Naren),
+(Pascal<Olivier),
+(Ignace<Naren),
+(Ignace<Olivier),
+(Dominique<3),
+(Philippe<=4),
+(Ignace!=2),
+(Ignace!=3),
+((Pascal + 3)=Naren),
+(Ignace!=4),
+(Dominique!=4)

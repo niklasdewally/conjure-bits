@@ -1,0 +1,21 @@
+$$ param file: hakank/debruijn2.param
+
+language ESSENCE' 1.0
+letting base be 2
+letting n be 3
+letting m be 2**3
+$$ model file: hakank/debruijn.eprime
+
+$ given base : int(..)
+$ given n : int(..)
+$ given m : int(..)
+find x : matrix indexed by [int(1..m)] of int(0..(((base**n)) - 1))
+find binary : matrix indexed by [int(1..m),int(1..n)] of int(0..(base - 1))
+find bin_code : matrix indexed by [int(1..m)] of int(0..(base - 1))
+such that
+allDiff(x),
+(forAll i : int(1..m) . (x[i]=((sum j : int(1..n) . ((base**((n - j))) * binary[i, j]))))),
+(forAll i : int(2..m) . (forAll j : int(2..n) . (binary[(i - 1), j]=binary[i, (j - 1)]))),
+(forAll j : int(2..n) . (binary[m, j]=binary[1, (j - 1)])),
+(forAll i : int(1..m) . (bin_code[i]=binary[i, 1])),
+(forAll i : int(2..m) . (x[1]<x[i]))

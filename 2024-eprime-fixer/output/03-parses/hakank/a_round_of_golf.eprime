@@ -1,0 +1,44 @@
+language ESSENCE' 1.0
+letting n be 4
+letting Jack be 1
+letting Bill be 2
+letting Paul be 3
+letting Frank be 4
+letting R be domain int(1..n)
+find Green : R
+find Clubb : R
+find Sands : R
+find Carter : R
+find last_name : matrix indexed by [int(1..n)] of R
+find cook : R
+find maintenance_man : R
+find clerk : R
+find caddy : R
+find job : matrix indexed by [int(1..n)] of R
+find score : matrix indexed by [int(1..n)] of int(70..85)
+such that
+(last_name[1]=Green),
+(last_name[2]=Clubb),
+(last_name[3]=Sands),
+(last_name[4]=Carter),
+(job[1]=cook),
+(job[2]=maintenance_man),
+(job[3]=clerk),
+(job[4]=caddy),
+allDiff(last_name),
+allDiff(job),
+allDiff(score),
+(Bill!=maintenance_man),
+(score[Bill]<score[Jack]),
+(score[Bill]<score[Paul]),
+(score[Bill]<score[Frank]),
+(Clubb!=Paul),
+(score[Clubb]=(score[clerk] + 10)),
+(Frank!=caddy),
+(Frank!=Sands),
+(caddy!=Sands),
+(((((score[Frank]=(score[Sands] + 4)) /\ (score[caddy]=(score[Sands] + 7)))) \/ (((score[Frank]=(score[Sands] + 7)) /\ (score[caddy]=(score[Sands] + 4)))))),
+(Frank!=Carter),
+(score[Carter]=78),
+(score[Frank]<score[Carter]),
+(forAll i : R . (score[i]!=81))

@@ -1,0 +1,17 @@
+language ESSENCE' 1.0
+letting n be 4
+letting range_ be domain int(1..n)
+letting r be 1
+letting ry be 2
+letting g be 3
+letting y be 4
+letting allowed be [[r, r, g, g], 
+[ry, r, y, r], 
+[g, g, r, r], 
+[y, r, ry, r]]
+letting Cars be (((int(r) union int(ry)) union int(g)) union int(y))
+letting Pedestrians be (int(r) union int(g))
+find V : matrix indexed by [range_] of Cars
+find P : matrix indexed by [range_] of Pedestrians
+such that
+(forAll i : range_ . (forAll j : range_ . (((j=(((1 + i))%4))) -> table([V[i], P[i], V[j], P[j]], allowed))))

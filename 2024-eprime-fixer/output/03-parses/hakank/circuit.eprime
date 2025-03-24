@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+letting n be 5
+letting range_ be domain int(1..n)
+find x : matrix indexed by [range_] of range_
+find z : matrix indexed by [range_] of range_
+such that
+allDiff(x),
+allDiff(z),
+(z[1]=x[1]),
+(forAll i : int(2..n) . (z[i]=x[z[(i - 1)]])),
+(forAll i : int(1..(n - 1)) . (z[i]!=1)),
+(z[n]=1)

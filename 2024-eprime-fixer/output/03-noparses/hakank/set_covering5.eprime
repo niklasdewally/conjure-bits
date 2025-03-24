@@ -1,0 +1,36 @@
+language ESSENCE' 1.0
+letting num_combinations be 19
+letting num_tasks be 8
+letting num_persons be 3
+letting combinations_person :matrix indexed by [int(1..num_combinations)] of int(1..num_persons) be [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
+letting preferences :matrix indexed by [int(1..num_persons),int(1..num_tasks)] of int(0..10) be [[5, 2, 1, 0, 1, 1, 0, 0], 
+[4, 0, 2, 2, 0, 0, 1, 1], 
+[0, 2, 4, 1, 1, 2, 0, 0]]
+letting c :matrix indexed by [int(1..num_combinations),int(1..num_tasks)] of int(0..3) be [[1, 1, 0, 0, 0, 0, 0, 0], 
+[1, 0, 3, 0, 0, 0, 0, 0], 
+[1, 0, 0, 0, 1, 0, 0, 0], 
+[0, 1, 1, 0, 0, 1, 0, 0], 
+[0, 1, 0, 0, 1, 1, 0, 0], 
+[0, 0, 1, 0, 1, 1, 0, 0], 
+[1, 0, 1, 0, 0, 0, 0, 0], 
+[1, 0, 0, 1, 0, 0, 0, 0], 
+[1, 0, 0, 0, 0, 0, 1, 1], 
+[0, 0, 1, 1, 0, 0, 1, 0], 
+[0, 0, 1, 1, 0, 0, 0, 1], 
+[0, 0, 1, 0, 0, 0, 1, 1], 
+[0, 0, 0, 1, 0, 0, 1, 1], 
+[0, 1, 1, 0, 0, 1, 0, 0], 
+[0, 1, 0, 1, 0, 1, 0, 0], 
+[0, 1, 0, 0, 1, 1, 0, 0], 
+[0, 0, 1, 1, 0, 1, 0, 0], 
+[0, 0, 1, 0, 1, 1, 0, 0], 
+[0, 0, 0, 1, 1, 1, 0, 0]]
+letting preference_range_ be domain int(1..10)
+find x : matrix indexed by [int(1..num_combinations)] of int(0..1)
+find preference_points : matrix indexed by [int(1..num_persons)] of preference_range_
+find sum_pref_points : int(0..1000)
+minimising sum_pref_points
+such that
+(forAll p : int(1..num_persons) . ((((sum j : int(1..num_combinations) . (((combinations_person[j]=p)) * x[j])))=1) /\ (preference_points[p]=(sum i : int(1..num_combinations) . (sum j : int(1..num_tasks) . (((((combinations_person[i]=p)) * x[i]) * c[i, j]) * preferences[p, j])))))),
+(forAll j : int(1..num_tasks) . (((sum i : int(1..num_combinations) . (x[i] * c[i, j])))=1)),
+(sum_pref_points=(sum i : int(1..num_persons) . preference_points[i]))

@@ -1,0 +1,10 @@
+language ESSENCE' 1.0
+letting n be 6
+letting m be 10
+letting standard_dist be [1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1;int(2..12)]
+find x1 : matrix indexed by [int(1..n)] of int(0..m)
+find x2 : matrix indexed by [int(1..n)] of int(0..m)
+such that
+(forAll k : int(2..12) . (standard_dist[k]=sum([((x1[i] + x2[j])=k)|i : int(1..n), j : int(1..n), () ]))),
+(forAll i : int(2..n) . ((x1[(i - 1)]<=x1[i]) /\ (x2[(i - 1)]<=x2[i]))),
+(forAll i : int(1..n) . (x1[i]<=x2[i]))

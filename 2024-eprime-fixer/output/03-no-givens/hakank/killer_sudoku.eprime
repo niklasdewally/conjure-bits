@@ -34,6 +34,6 @@ letting P be [[1, 1, 1, 2, 0, 0, 0, 0, 3],
 [9, 8, 9, 9, 0, 0, 0, 0, 17]]
 find x : matrix indexed by [range_,range_] of range_
 such that
-(forAll i : range_ . (allDiff(x[int(..),i]) /\ allDiff(x[i,int(..)]))),
+(forAll i : range_ . (allDiff(x[..,i]) /\ allDiff(x[i,..]))),
 (forAll i : int(0..2) . (forAll j : int(0..2) . allDiff([x[r, c]|r : int(((i * 3) + 1)..((i * 3) + 3)), c : int(((j * 3) + 1)..((j * 3) + 3)), () ]))),
 (forAll p : int(1..num_p) . ((sum([x[P[p, ((2 * ((i - 1))) + 1)], P[p, ((2 * ((i - 1))) + 2)]]|i : int(1..num_hints), ((0<P[p, ((2 * ((i - 1))) + 1)])) ]))=P[p, ((2 * num_hints) + 1)]))

@@ -1,0 +1,16 @@
+language ESSENCE' 1.0
+letting num_items be 7
+letting num_bids be 5
+letting max_item be 7
+letting packages be [[1, 1, 1, 1, 0, 0, 0], 
+[0, 1, 1, 0, 0, 1, 0], 
+[1, 0, 0, 1, 1, 0, 0], 
+[0, 1, 0, 0, 0, 0, 1], 
+[0, 0, 0, 0, 1, 1, 0]]
+letting bids be [8, 6, 5, 2, 2]
+find x : matrix indexed by [int(1..num_bids)] of int(0..1)
+find total_ : int(0..1000)
+maximising total_
+such that
+(total_=(sum i : int(1..num_bids) . (x[i] * bids[i]))),
+(forAll j : int(1..num_items) . (((sum i : int(1..num_bids) . (x[i] * packages[i, j])))<=1))

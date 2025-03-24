@@ -1,0 +1,29 @@
+$$ param file: hakank/minesweeper6.param
+
+language ESSENCE' 1.0
+$ Problem from Gecode/examples/minesweeper.cc  problem 6
+letting r be 8
+letting c be 8
+letting game be [
+       [-1,3,2,-1,-1,1,-1,-1],
+       [-1,-1,-1,-1,1,-1,-1,3],
+       [3,-1,-1,2,-1,-1,-1,4],
+       [-1,5,-1,-1,-1,5,-1,-1],
+       [-1,-1,6,-1,-1,-1,5,-1],
+       [3,-1,-1,-1,5,-1,-1,4],
+       [2,-1,-1,5,-1,-1,-1,-1],
+       [-1,-1,2,-1,-1,3,4,-1]
+   ]
+
+$$ model file: hakank/minesweeper.eprime
+
+$ given r : int(..)
+$ given c : int(..)
+$ given game : matrix indexed by [int(1..r),int(1..c)] of int((-1)..)
+letting X be (-1)
+letting AB be domain int((-1)..1)
+letting rows be domain int(1..r)
+letting cols be domain int(1..c)
+find mines : matrix indexed by [rows,cols] of int(0..1)
+such that
+(forAll i : rows . (forAll j : cols . (((((X<game[i, j]) -> (mines[i, j]=0))) /\ (((mines[i, j]=1) -> (game[i, j]=X)))) /\ (((X<game[i, j]) -> (game[i, j]=sum([mines[(i + a), (j + b)]|a : AB, b : AB, (((((0<(i + a)) /\ (0<(j + b))) /\ ((i + a)<=r)) /\ ((j + b)<=c))) ])))))))

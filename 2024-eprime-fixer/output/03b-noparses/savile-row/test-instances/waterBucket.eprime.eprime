@@ -1,0 +1,33 @@
+$$ param file: savile-row/test-instances/waterBucket.eprime.param
+
+language ESSENCE' 1.0
+
+letting steps be 7
+
+$ classical water bucket size_s
+letting SIZE_A be 8
+letting SIZE_B be 5
+letting SIZE_C be 3
+
+$$ model file: savile-row/test-instances/waterBucket.eprime
+
+$ given steps : int(..)
+$ given SIZE_A : int(..)
+$ given SIZE_B : int(..)
+$ given SIZE_C : int(..)
+letting STEPS be domain int(0..steps)
+letting STEPS1 be domain int(1..steps)
+find bucketA : matrix indexed by [STEPS] of int(0..SIZE_A)
+find bucketB : matrix indexed by [STEPS] of int(0..SIZE_B)
+find bucketC : matrix indexed by [STEPS] of int(0..SIZE_C)
+such that
+(SIZE_B<SIZE_A),
+(SIZE_C<SIZE_B),
+(bucketA[0]=0),
+(bucketB[0]=SIZE_B),
+(bucketC[0]=SIZE_C),
+(bucketA[steps]=(((SIZE_B + SIZE_C))/2)),
+(bucketB[steps]=(((SIZE_B + SIZE_C))/2)),
+(bucketC[steps]<=1),
+(forAll step : STEPS . (((bucketC[step] + bucketB[step]) + bucketA[step])=(SIZE_B + SIZE_C))),
+(forAll step : STEPS1 . (((((((((((0<bucketA[(step - 1)])) /\ ((bucketB[(step - 1)]<SIZE_B)))) /\ ((((bucketB[step]=min(SIZE_B, (bucketA[(step - 1)] + bucketB[(step - 1)])))) /\ ((bucketA[step]=((bucketA[(step - 1)] - bucketB[step]) + bucketB[(step - 1)]))))))) \/ ((((((0<bucketA[(step - 1)])) /\ ((bucketC[(step - 1)]<SIZE_C)))) /\ ((((bucketC[step]=min(SIZE_C, (bucketA[(step - 1)] + bucketC[(step - 1)])))) /\ ((bucketA[step]=((bucketA[(step - 1)] - bucketC[step]) + bucketC[(step - 1)])))))))) \/ ((((((0<bucketB[(step - 1)])) /\ ((bucketA[(step - 1)]<SIZE_A)))) /\ ((((bucketA[step]=min(SIZE_A, (bucketA[(step - 1)] + bucketB[(step - 1)])))) /\ ((bucketB[step]=((bucketB[(step - 1)] - bucketA[step]) + bucketA[(step - 1)])))))))) \/ ((((((0<bucketB[(step - 1)])) /\ ((bucketC[(step - 1)]<SIZE_C)))) /\ ((((bucketC[step]=min(SIZE_C, (bucketB[(step - 1)] + bucketC[(step - 1)])))) /\ ((bucketB[step]=((bucketB[(step - 1)] - bucketC[step]) + bucketC[(step - 1)])))))))) \/ ((((((0<bucketC[(step - 1)])) /\ ((bucketA[(step - 1)]<SIZE_A)))) /\ ((((bucketA[step]=min(SIZE_A, (bucketA[(step - 1)] + bucketC[(step - 1)])))) /\ ((bucketC[step]=((bucketC[(step - 1)] - bucketA[step]) + bucketA[(step - 1)])))))))) \/ ((((((0<bucketC[(step - 1)])) /\ ((bucketB[(step - 1)]<SIZE_B)))) /\ ((((bucketB[step]=min(SIZE_B, (bucketB[(step - 1)] + bucketC[(step - 1)])))) /\ ((bucketC[step]=((bucketC[(step - 1)] - bucketB[step]) + bucketB[(step - 1)])))))))))

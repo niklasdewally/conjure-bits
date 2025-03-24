@@ -1,0 +1,21 @@
+$$ param file: savile-row/test-instances/molnars.eprime.param
+
+language ESSENCE' 1.0
+
+letting k=3
+letting dommax=4
+
+$$ model file: savile-row/test-instances/molnars.eprime
+
+$ given k : int(1..)
+$ given dommax : int(1..)
+letting RANGE be domain int(0..(k - 1))
+find M : matrix indexed by [RANGE,RANGE] of ((int((-dommax)..(-2)) union int(0)) union int(2..dommax))
+find det : (int((-1)) union int(1))
+find squaredet : (int((-1)) union int(1))
+such that
+(sum([(((((-1))**sum([(perm[idx2]<perm[idx1])|idx1 : RANGE, idx2 : RANGE, ((idx1<idx2)) ]))) * product([M[j, perm[j]]|j : RANGE, () ]))|perm : matrix indexed by [RANGE] of RANGE, (allDiff(perm)) ])=det),
+(sum([(((((-1))**sum([(perm[idx2]<perm[idx1])|idx1 : RANGE, idx2 : RANGE, ((idx1<idx2)) ]))) * product([(M[j, perm[j]] * M[j, perm[j]])|j : RANGE, () ]))|perm : matrix indexed by [RANGE] of RANGE, (allDiff(perm)) ])=squaredet),
+(forAll i : int(0..(k - 2)) . (M[i,..] <=lex M[(i + 1),..])),
+(forAll i : int(0..(k - 2)) . (M[..,i] <=lex M[..,(i + 1)])),
+true

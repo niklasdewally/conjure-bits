@@ -1,0 +1,72 @@
+$$ param file: savile-row/test-instances/plotting.eprime.param
+
+$ Plotting instance from picture at:
+$ http://www.reservoir-gods.com/gfx/godlenes/flipull.gif
+$ (using the 5x5 grid only)
+
+language ESSENCE' 1.0
+
+letting noBlocks be 26
+letting noColours be 4
+
+letting gridWidth be 5
+letting gridHeight be 5
+
+letting noSteps be 14
+letting blocksRemaining be 13
+
+letting initGrid be [
+  [3, 1, 3, 4, 1], 
+  [3, 4, 3, 3, 4], 
+  [4, 4, 2, 1, 4], 
+  [4, 1, 1, 3, 1], 
+  [1, 3, 4, 1, 2]  ]
+
+letting initHand be 3
+$$ model file: savile-row/test-instances/plotting.eprime
+
+$ given noBlocks : int(1..)
+$ given noColours : int(1..)
+letting COLOURS be domain int(1..noColours)
+letting EMPTY be 0
+letting EMPTYANDCOLOURS be domain int(EMPTY..noColours)
+$ given gridWidth : int(1..)
+$ given gridHeight : int(1..)
+letting GRIDCOLS be domain int(1..gridWidth)
+letting GRIDROWS be domain int(1..gridHeight)
+$ given noSteps : int(1..)
+letting STEPSFROM1 be domain int(1..noSteps)
+letting STEPSFROM0 be domain int(0..noSteps)
+$ given initGrid : matrix indexed by [GRIDROWS,GRIDCOLS] of COLOURS
+$ given initHand : COLOURS
+$ given blocksRemaining : int(1..noBlocks)
+find fpRow : matrix indexed by [STEPSFROM1] of int(0..gridHeight)
+find fpCol : matrix indexed by [STEPSFROM1] of int(0..gridWidth)
+find grid : matrix indexed by [STEPSFROM0,GRIDROWS,GRIDCOLS] of EMPTYANDCOLOURS
+find hand : matrix indexed by [STEPSFROM0] of COLOURS
+such that
+(forAll gCol : GRIDCOLS . (forAll gRow : GRIDROWS . (grid[0, gRow, gCol]=initGrid[gRow, gCol]))),
+(hand[0]=initHand),
+atleast(flatten(grid[noSteps,..,..]),[(((noBlocks - 1)) - blocksRemaining)],[0]),
+(forAll step : STEPSFROM1 . (((sum i : GRIDCOLS . (sum j : GRIDROWS . grid[step, j, i])))<((sum i : GRIDCOLS . (sum j : GRIDROWS . grid[(step - 1), j, i]))))),
+(forAll step : STEPSFROM1 . (((fpRow[step] * fpCol[step]))=0)),
+(forAll step : STEPSFROM1 . (0<((fpRow[step] + fpCol[step])))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((grid[(step - 1), gRow, gCol]=0)) -> ((grid[step, gRow, gCol]=0)))))),
+(forAll step : STEPSFROM1 . (((exists shotRow : GRIDROWS . ((((fpRow[step]=shotRow)) /\ (forAll rowBlock : GRIDCOLS . ((((grid[(step - 1), shotRow, rowBlock]=hand[(step - 1)])) \/ ((grid[(step - 1), shotRow, rowBlock]=EMPTY))))))))) -> ((hand[(step - 1)]=hand[step])))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . ((((exists underRow : int((gRow + 1)..gridHeight) . (((underRow=fpRow[step])) /\ ((grid[(step - 1), underRow, 1]!=hand[(step - 1)])))))) -> ((grid[step, gRow, 1]=grid[(step - 1), gRow, 1]))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((fpRow[step]=gRow)) /\ ((exists blockLeft : int(1..(gCol - 1)) . ((((grid[(step - 1), gRow, blockLeft]!=EMPTY)) /\ ((grid[(step - 1), gRow, blockLeft]!=hand[(step - 1)])))))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((fpRow[step]!=0)) /\ ((fpRow[step]<gRow)))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . ((((((fpRow[step]=gRow)) /\ ((grid[(step - 1), gRow, gCol]!=hand[(step - 1)]))) /\ ((forAll blockLeft : int(1..(gCol - 1)) . ((grid[(step - 1), gRow, blockLeft]=EMPTY)))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((exists underRow : int((gRow + 1)..gridHeight) . (((underRow=fpRow[step])) /\ ((exists blockLeft : int(1..gCol) . ((((grid[(step - 1), underRow, blockLeft]!=EMPTY)) /\ ((grid[(step - 1), underRow, blockLeft]!=hand[(step - 1)]))))))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((fpCol[step]=gCol)) /\ ((exists blockAbove : int(1..(gRow - 1)) . ((((grid[(step - 1), blockAbove, gCol]!=EMPTY)) /\ ((grid[(step - 1), blockAbove, gCol]!=hand[(step - 1)])))))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((fpCol[step]!=0)) /\ ((fpCol[step]!=gCol)))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . ((((((fpCol[step]=gCol)) /\ ((grid[(step - 1), gRow, gCol]!=hand[(step - 1)]))) /\ ((((1<gRow)) -> ((grid[(step - 1), (gRow - 1), gCol]=EMPTY)))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), gRow, gCol])))))),
+(forAll step : STEPSFROM1 . (((exists shotRow : GRIDROWS . ((((fpRow[step]=shotRow)) /\ (exists exposedBlock : GRIDCOLS . (((((grid[(step - 1), shotRow, exposedBlock]!=hand[(step - 1)])) /\ ((grid[(step - 1), shotRow, exposedBlock]!=EMPTY))) /\ (forAll blockLeft : int(1..(exposedBlock - 1)) . (grid[(step - 1), shotRow, blockLeft]=0))))))))) -> ((hand[(step - 1)]=hand[step])))),
+(forAll step : STEPSFROM1 . (((exists shotCol : GRIDCOLS . ((((fpCol[step]=shotCol)) /\ (exists exposedBlock : GRIDROWS . (((((grid[(step - 1), exposedBlock, shotCol]!=hand[(step - 1)])) /\ ((grid[(step - 1), exposedBlock, shotCol]!=EMPTY))) /\ (forAll blockAbove : int(1..(exposedBlock - 1)) . (grid[(step - 1), blockAbove, shotCol]=0))))))))) -> ((hand[(step - 1)]=hand[step])))),
+(forAll step : STEPSFROM1 . (((exists shotCol : GRIDCOLS . ((((fpCol[step]=shotCol)) /\ (forAll colBlock : GRIDROWS . ((((grid[(step - 1), colBlock, shotCol]=hand[(step - 1)])) \/ ((grid[(step - 1), colBlock, shotCol]=EMPTY))))))))) -> ((hand[(step - 1)]=hand[step])))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . ((((((grid[(step - 1), gRow, gCol]=hand[(step - 1)])) /\ ((fpCol[step]=gCol))) /\ ((forAll blockAbove : int(1..(gRow - 1)) . ((((grid[(step - 1), blockAbove, gCol]=hand[(step - 1)])) \/ ((grid[(step - 1), blockAbove, gCol]=EMPTY)))))))) -> ((grid[step, gRow, gCol]=EMPTY)))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((((grid[(step - 1), gRow, gCol]=hand[(step - 1)])) /\ ((fpRow[step]=gRow))) /\ ((((1<gRow)) -> ((grid[(step - 1), (gRow - 1), gCol]=EMPTY))))) /\ ((forAll blockLeft : int(1..(gCol - 1)) . ((((grid[(step - 1), gRow, blockLeft]=hand[(step - 1)])) \/ ((grid[(step - 1), gRow, blockLeft]=EMPTY)))))))) -> ((grid[step, gRow, gCol]=EMPTY)))))),
+(forAll step : STEPSFROM1 . (forAll gCol : GRIDCOLS . (((exists delRow : int(2..gridHeight) . ((((fpRow[step]=delRow)) /\ ((forAll delBlock : int(1..gCol) . ((((grid[(step - 1), delRow, delBlock]=hand[(step - 1)])) \/ ((grid[(step - 1), delRow, delBlock]=EMPTY)))))))))) -> ((grid[step, 1, gCol]=EMPTY))))),
+(forAll step : STEPSFROM1 . (forAll gRow : int(2..(gridHeight - 1)) . (forAll gCol : GRIDCOLS . (((((grid[(step - 1), (gRow - 1), gCol]=EMPTY)) /\ ((exists delRow : int(2..gridHeight) . ((((fpRow[step]=delRow)) /\ ((forAll delBlock : int(1..gCol) . ((((grid[(step - 1), delRow, delBlock]=hand[(step - 1)])) \/ ((grid[(step - 1), delRow, delBlock]=EMPTY)))))))))))) -> ((grid[step, gRow, gCol]=EMPTY)))))),
+(forAll step : STEPSFROM1 . (forAll gRow : GRIDROWS . (forAll gCol : GRIDCOLS . (((((hand[(step - 1)]!=grid[(step - 1), gRow, gCol])) /\ (((((((fpRow[step]=gRow)) /\ ((forAll colsLeft : int(1..(gCol - 1)) . (((grid[(step - 1), gRow, colsLeft]=hand[(step - 1)])) \/ ((grid[(step - 1), gRow, colsLeft]=EMPTY)))))) /\ ((exists colsLeft : int(1..(gCol - 1)) . ((grid[(step - 1), gRow, colsLeft]=hand[(step - 1)])))))) \/ (((((fpCol[step]=gCol)) /\ ((forAll rowsAbove : int(1..(gRow - 1)) . (((grid[(step - 1), rowsAbove, gCol]=hand[(step - 1)])) \/ ((grid[(step - 1), rowsAbove, gCol]=EMPTY)))))) /\ ((exists rowsAbove : int(1..(gRow - 1)) . ((grid[(step - 1), rowsAbove, gCol]=hand[(step - 1)])))))))))) -> ((((hand[step]=grid[(step - 1), gRow, gCol])) /\ ((hand[(step - 1)]=grid[step, gRow, gCol])))))))),
+(forAll step : STEPSFROM1 . (forAll gRow : int(2..gridHeight) . (forAll gCol : GRIDCOLS . (((((grid[(step - 1), (gRow - 1), gCol]!=EMPTY)) /\ ((exists delRow : int(gRow..gridHeight) . ((((fpRow[step]=delRow)) /\ ((forAll delBlock : int(1..gCol) . ((((grid[(step - 1), delRow, delBlock]=hand[(step - 1)])) \/ ((grid[(step - 1), delRow, delBlock]=EMPTY)))))))))))) -> ((grid[step, gRow, gCol]=grid[(step - 1), (gRow - 1), gCol]))))))

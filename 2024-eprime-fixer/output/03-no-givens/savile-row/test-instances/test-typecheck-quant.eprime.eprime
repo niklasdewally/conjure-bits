@@ -1,0 +1,8 @@
+$$ param file: savile-row/test-instances/test-typecheck-quant.eprime.param
+
+$$ model file: savile-row/test-instances/test-typecheck-quant.eprime
+
+letting TICKS be domain int(0..4)
+find x : int(0..4)
+such that
+(((sum i : int(0..x) . i))=4)

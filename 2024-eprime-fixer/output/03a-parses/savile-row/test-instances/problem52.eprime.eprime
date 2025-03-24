@@ -1,0 +1,10 @@
+$$ param file: savile-row/test-instances/problem52.eprime.param
+
+language ESSENCE' 1.0
+letting n be 3
+$$ model file: savile-row/test-instances/problem52.eprime
+
+$ given n : int(3..20)
+find m : matrix indexed by [int(4..n)] of bool
+such that
+true

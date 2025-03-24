@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+letting D1 be domain int(0..9)
+letting D2 be domain int(1..9)
+find M : matrix indexed by [D1] of D2
+such that
+(forAll i : int(10..1) . (0<m[i]))

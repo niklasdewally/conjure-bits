@@ -1,0 +1,18 @@
+$$ param file: savile-row/test-instances/problem51.eprime.param
+
+language ESSENCE' 1.0
+
+letting nItems be 10
+letting capacity be 11
+letting weights be [1, 7, 2, 2, 2, 6, 8, 5, 8, 4; int(1..10)]
+letting values be [1, 7, 2, 2, 2, 6, 8, 5, 8, 4; int(1..10)]
+$$ model file: savile-row/test-instances/problem51.eprime
+
+$ given nItems : int(1..)
+$ given capacity : int(1..)
+$ given weights : matrix indexed by [int(1..nItems)] of int(1..)
+$ given values : matrix indexed by [int(1..nItems)] of int(1..)
+find packed : matrix indexed by [int(1..nItems)] of bool
+maximising (sum i : int(1..nItems) . (packed[i] * values[i]))
+such that
+(((sum i : int(1..nItems) . (packed[i] * weights[i])))<=capacity)

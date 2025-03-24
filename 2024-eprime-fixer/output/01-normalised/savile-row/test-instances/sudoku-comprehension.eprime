@@ -1,0 +1,11 @@
+language ESSENCE' 1.0
+given size : int(..)
+given subsize : int(..)
+letting RANGE be domain int(0..(size - 1))
+given values : matrix indexed by [RANGE,RANGE] of int(0..size)
+find field : matrix indexed by [RANGE,RANGE] of RANGE
+such that
+(forAll row : RANGE . allDiff(field[row,..])),
+(forAll col : RANGE . allDiff(field[..,col])),
+(forAll i : int(0..(subsize - 1)) . (forAll j : int(0..(subsize - 1)) . allDiff([field[k, l]|k : int((i * subsize)..((((i + 1)) * subsize) - 1)), l : int((j * subsize)..((((j + 1)) * subsize) - 1)), () ;int(1..)]))),
+(forAll row : RANGE . (forAll col : RANGE . (((0<values[row, col])) -> ((field[row, col]=(values[row, col] - 1))))))

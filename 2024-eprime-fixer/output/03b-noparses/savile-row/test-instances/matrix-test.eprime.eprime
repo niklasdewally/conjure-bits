@@ -1,0 +1,20 @@
+$$ param file: savile-row/test-instances/matrix-test.eprime.param
+
+letting v = 3
+letting b = 3
+letting r = 60
+letting k = 3
+letting l = 20
+
+$$ model file: savile-row/test-instances/matrix-test.eprime
+
+$ given v : int(..)
+$ given b : int(..)
+$ given r : int(..)
+$ given k : int(..)
+$ given l : int(..)
+find bibd : matrix indexed by [int(1..v),int(1..b)] of int(0..1)
+find x : int((-5)..5)
+find y : int((-5)..5)
+such that
+(bibd[bibd[x, y], bibd[x, y]]=1)

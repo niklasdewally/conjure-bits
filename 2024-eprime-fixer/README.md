@@ -28,6 +28,8 @@ input/                -- place input models and params files here.
 output/01-normalised  -- step 1 : cleaned eprime models.
 output/02-no-keywords -- step 2 : models without Essence keywords, ready for Conjure.
 output/03-no-givens   -- step 3 : fixed models but with the givens substituted in.
+output/03a-parses     -- models from step 3 that Conjure can parse
+output/03b-noparses   -- models from step 3 that Conjure cannot parse
 Makefile              -- does all this: type make to go
 scripts/              -- scripts to make all this work
 ```

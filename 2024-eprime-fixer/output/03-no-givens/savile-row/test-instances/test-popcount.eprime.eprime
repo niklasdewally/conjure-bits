@@ -1,0 +1,9 @@
+$$ param file: savile-row/test-instances/test-popcount.eprime.param
+
+$$ model file: savile-row/test-instances/test-popcount.eprime
+
+find x : int(1..10)
+such that
+(popcount(10)=2),
+(popcount(1024)=1),
+(popcount(1023)=10)

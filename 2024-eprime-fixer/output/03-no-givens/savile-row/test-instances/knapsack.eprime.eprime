@@ -1,0 +1,24 @@
+$$ param file: savile-row/test-instances/knapsack.eprime.param
+
+$ Knapsack Instance
+$
+$ created by Hakan Kjellerstrand, hakank@bonetmail.com
+$ See also my Tailor/Essence' page: http://www.hakank.org/minion_tailor
+language ESSENCE' 1.0
+
+letting n be 102
+letting num_entries be 11
+letting values be  [15, 100, 90, 60, 40, 15, 10,  1, 12, 12, 100]
+letting weights be [ 2,  20, 20, 30, 40, 30, 60, 10, 21, 12,   2]
+$$ model file: savile-row/test-instances/knapsack.eprime
+
+$ given n : int(..)
+$ given num_entries : int(..)
+$ given values : matrix indexed by [int(1..num_entries)] of int(1..100)
+$ given weights : matrix indexed by [int(1..num_entries)] of int(1..100)
+find x : matrix indexed by [int(1..num_entries)] of bool
+find z : int(0..10000)
+maximising z
+such that
+(z=(sum i : int(1..num_entries) . (x[i] * values[i]))),
+(((sum i : int(1..num_entries) . (x[i] * weights[i])))<=n)

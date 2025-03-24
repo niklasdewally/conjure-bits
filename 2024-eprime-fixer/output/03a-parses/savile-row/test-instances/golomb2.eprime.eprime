@@ -1,0 +1,14 @@
+$$ param file: savile-row/test-instances/golomb2.eprime.param
+
+language ESSENCE' 1.0
+
+letting ticks be 5
+$$ model file: savile-row/test-instances/golomb.eprime
+
+$ given ticks : int(..)
+letting TICKS be domain int(1..ticks)
+find ruler : matrix indexed by [TICKS] of int(0..(ticks**2))
+minimising ruler[ticks]
+such that
+(forAll i : TICKS . (forAll j : TICKS . (((((i<j)) /\ ((j<=ticks)))) -> ((ruler[i]<ruler[j]))))),
+(forAll i : TICKS . (forAll j : TICKS . (forAll k : TICKS . (forAll l : TICKS . ((((((i<j)) /\ ((k<l))) /\ ((j!=l)))) -> (((ruler[j] - ruler[i])!=(ruler[l] - ruler[k]))))))))

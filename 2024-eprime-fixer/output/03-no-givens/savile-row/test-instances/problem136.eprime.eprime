@@ -1,0 +1,6 @@
+$$ param file: savile-row/test-instances/problem136.eprime.param
+
+$$ model file: savile-row/test-instances/problem136.eprime
+
+such that
+and([true|q5 : int(1..2), t1 : int(0..[5, 5][q5]), () ])

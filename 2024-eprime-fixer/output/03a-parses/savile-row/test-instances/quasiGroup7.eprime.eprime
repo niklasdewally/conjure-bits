@@ -1,0 +1,15 @@
+$$ param file: savile-row/test-instances/quasiGroup7.eprime.param
+
+language ESSENCE' 1.0
+letting n be 8
+$$ model file: savile-row/test-instances/quasiGroup7.eprime
+
+$ given n : int(1..1000)
+letting nDomain be domain int(0..(n - 1))
+find quasiGroup : matrix indexed by [nDomain,nDomain] of nDomain
+such that
+(forAll row : nDomain . allDiff(quasiGroup[row,..])),
+(forAll i : nDomain . ((quasiGroup[i, i]=i))),
+(forAll col : nDomain . allDiff(quasiGroup[..,col])),
+(forAll i : nDomain . (forAll j : nDomain . (quasiGroup[i, quasiGroup[j, i]]=quasiGroup[quasiGroup[j, i], j]))),
+(forAll i : nDomain . (i<=(quasiGroup[i, (n - 1)] + 2)))

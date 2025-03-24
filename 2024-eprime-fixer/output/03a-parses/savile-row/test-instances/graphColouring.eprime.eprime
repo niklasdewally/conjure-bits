@@ -1,0 +1,26 @@
+$$ param file: savile-row/test-instances/graphColouring.eprime.param
+
+language ESSENCE' 1.0
+
+letting vertices be 5
+letting colours be 3
+
+letting edges be [[false, true, false, true, false], 
+                  [true, false, true, false, true],
+                  [false, true, false, true, true], 
+                  [true, false, true, false, false],
+                  [false, true, true, false, false]]
+
+$$ model file: savile-row/test-instances/graphColouring.eprime
+
+$ given vertices : int(1..)
+$ given colours : int(1..)
+letting VERTICES be domain int(1..vertices)
+letting COLOURS be domain int(1..colours)
+$ given edges : matrix indexed by [VERTICES,VERTICES] of bool
+find colouring : matrix indexed by [VERTICES] of COLOURS
+find usedColours : matrix indexed by [COLOURS] of bool
+minimising (sum c : COLOURS . usedColours[c])
+such that
+(forAll a : VERTICES . (forAll b : VERTICES . (edges[a, b] -> (colouring[a]!=colouring[b])))),
+(forAll a : VERTICES . (forAll c : COLOURS . (((colouring[a]=c)) -> (usedColours[c]))))

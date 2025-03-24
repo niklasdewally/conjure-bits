@@ -1,0 +1,16 @@
+$$ param file: savile-row/test-instances/peacableArmyOfQueens-old1.eprime.param
+
+language ESSENCE' 1.0
+letting n be 6
+$$ model file: savile-row/test-instances/peacableArmyOfQueens-old1.eprime
+
+$ given n : int(1..)
+letting N be domain int(1..n)
+find board : matrix indexed by [N,N] of int(0..2)
+find amountOfQueens : int(1..(((n * n))/2))
+maximising amountOfQueens
+such that
+(((sum row : N . ((sum col : N . ((board[row, col]=1))))))=amountOfQueens),
+(((sum row : N . ((sum col : N . ((board[row, col]=2))))))=amountOfQueens),
+(forAll row : N . (forAll col : N . (((board[row, col]=1)) -> ((forAll i : N . (((((((((i!=row)) -> ((board[i, col]<2)))) /\ ((((i!=col)) -> ((board[row, i]<2))))) /\ (((((((row + i)<=n)) /\ (((col + i)<=n)))) -> ((board[(row + i), (col + i)]<2))))) /\ ((((((0<(row - i))) /\ ((0<(col - i))))) -> ((board[(row - i), (col - i)]<2))))) /\ (((((((row + i)<=n)) /\ ((0<(col - i))))) -> ((board[(row + i), (col - i)]<2))))) /\ ((((((0<(row - i))) /\ (((col + i)<=n)))) -> ((board[(row - i), (col + i)]<2)))))))))),
+(forAll row : N . (forAll col : N . (((board[row, col]=2)) -> ((forAll j : N . (((((((((j!=row)) -> ((((board[j, col]<1)) \/ ((1<board[j, col])))))) /\ ((((j!=col)) -> ((((board[row, j]<1)) \/ ((1<board[row, j]))))))) /\ (((((((row + j)<=n)) /\ (((col + j)<=n)))) -> ((((board[(row + j), (col + j)]<1)) \/ ((1<board[(row + j), (col + j)]))))))) /\ ((((((0<(row - j))) /\ ((0<(col - j))))) -> ((((board[(row - j), (col - j)]<1)) \/ ((1<board[(row - j), (col - j)]))))))) /\ (((((((row + j)<=n)) /\ ((0<(col - j))))) -> ((((board[(row + j), (col - j)]<1)) \/ ((1<board[(row + j), (col - j)]))))))) /\ ((((((0<(row - j))) /\ (((col + j)<=n)))) -> ((((board[(row - j), (col + j)]<1)) \/ ((1<board[(row - j), (col + j)]))))))))))))

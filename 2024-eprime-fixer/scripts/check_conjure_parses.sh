@@ -1,9 +1,9 @@
 #!/bin/bash
 SEARCH_DIR=output/03-no-givens
-OUT_PASS_DIR=output/03-parses
-OUT_FAIL_DIR=output/03-noparses
+OUT_PASS_DIR=output/03a-parses
+OUT_FAIL_DIR=output/03b-noparses
 for eprime_file in $(find "${SEARCH_DIR}" -iname '*.eprime'); do
-  if  conjure pretty "${eprime_file}" >/dev/null 2>/dev/null ; then 
+  if  timeout 10s conjure pretty "${eprime_file}" >/dev/null 2>/dev/null ; then 
     echo "* ${eprime_file} parses" >&2
       file_base=${eprime_file##${SEARCH_DIR}/}
       new_file="${OUT_PASS_DIR}/${file_base}"

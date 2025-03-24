@@ -1,0 +1,22 @@
+$$ param file: savile-row/test-instances/tomsProblem.eprime.param
+
+language ESSENCE' 1.0
+letting n be 3
+letting diagonal be [1,1,1]
+letting abelian be true
+letting rank3 be true
+$$ model file: savile-row/test-instances/tomsProblem.eprime
+
+$ given n : int(..)
+$ given abelian : bool
+$ given rank3 : bool
+letting D be domain int(1..n)
+$ given diagonal : matrix indexed by [D] of D
+find M : matrix indexed by [D,D] of D
+find occurrences : matrix indexed by [D] of int(1..(n * n))
+maximising occurrences[(n - 1)]
+such that
+(forAll i : D . (M[i, i]=diagonal[i])),
+(forAll a : D . (forAll b : D . (forAll c : D . ((M[a, b] * c)=(a * M[b, c]))))),
+(rank3 -> (forAll a : D . (forAll b : D . (forAll c : D . (((M[a, b] * c)=0)))))),
+(abelian -> (forAll a : D . (forAll b : D . (((a!=b)) -> ((M[a, b]=M[b, a]))))))

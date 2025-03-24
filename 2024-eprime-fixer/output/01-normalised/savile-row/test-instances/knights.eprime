@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+given n : int(..)
+given startCol : int(0..(n - 1))
+given startRow : int(0..(n - 1))
+given tourLength : int(1..(n * n))
+letting FIELDS be domain int(0..((n * n) - 1))
+letting KNIGHTS be domain int(0..(tourLength - 1))
+find tour : matrix indexed by [KNIGHTS] of FIELDS
+such that
+allDiff(tour),
+(tour[0]=(startCol + ((startRow) * n))),
+(forAll i : int(0..(tourLength - 2)) . ((((((|((tour[i]%(n)) - (tour[(i + 1)]%(n)))|=1)) /\ ((|((tour[i]/(n)) - (tour[(i + 1)]/(n)))|=2)))) \/ ((((|((tour[i]%(n)) - (tour[(i + 1)]%(n)))|=2)) /\ ((|((tour[i]/(n)) - (tour[(i + 1)]/(n)))|=1)))))))

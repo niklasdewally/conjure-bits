@@ -1,0 +1,22 @@
+$$ param file: savile-row/test-instances/langfordN.eprime.param
+
+$ Langford's number problem (CSP lib problem 24)
+$
+$ Arrange_ 2 set_s of positive integers 1..k to a sequence_,
+$ such that, following the first occurence of an integer i, 
+$ each subsequent occurrence of i, appears i+1 indices later
+$ than the last. 
+$ For example, for k=4, a solution would be 41312432
+
+language ESSENCE' 1.0
+letting l be 3
+letting k be 9
+
+$$ model file: savile-row/test-instances/langford.eprime
+
+$ given k : int(..)
+letting positionDomain be domain int(1..(2 * k))
+find position : matrix indexed by [positionDomain] of positionDomain
+such that
+(forAll i : int(1..k) . (position[(i + k)]=((position[i] + i) + 1))),
+allDiff(position)

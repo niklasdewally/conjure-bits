@@ -1,0 +1,9 @@
+language ESSENCE' 1.0
+given r : int(..)
+given c : int(..)
+given row_sums : matrix indexed by [int(1..r)] of int(0..100)
+given col_sums : matrix indexed by [int(1..c)] of int(0..100)
+find x : matrix indexed by [int(1..r),int(1..c)] of bool
+such that
+(forAll i : int(1..r) . ((row_sums[i]=(sum j : int(1..c) . x[i, j])))),
+(forAll j : int(1..c) . ((col_sums[j]=(sum i : int(1..r) . x[i, j]))))

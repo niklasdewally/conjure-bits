@@ -1,0 +1,15 @@
+$$ param file: savile-row/test-instances/divide-mod.eprime.param
+
+$$ model file: savile-row/test-instances/divide-mod.eprime
+
+find x : int(1..1)
+such that
+((3/2)=1),
+((((-3))/2)=(-2)),
+((3/((-2)))=(-2)),
+((((-3))/((-2)))=1),
+((3%2)=1),
+((3%((-2)))=(-1)),
+((((-3))%2)=1),
+((((-3))%((-2)))=(-1)),
+true

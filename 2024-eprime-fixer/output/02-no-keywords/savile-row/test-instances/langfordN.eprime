@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+given k : int(..)
+given l : int(..)
+letting positionDomain be domain int(1..(l * k))
+find position : matrix indexed by [positionDomain] of positionDomain
+such that
+(forAll i : int(1..k) . (forAll j : int(1..((l - 1))) . (position[((j * k) + i)]=((position[((((j - 1)) * k) + i)] + i) + 1)))),
+allDiff(position)

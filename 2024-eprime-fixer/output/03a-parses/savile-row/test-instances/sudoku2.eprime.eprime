@@ -1,0 +1,23 @@
+$$ param file: savile-row/test-instances/sudoku2.eprime.param
+
+language ESSENCE' 1.0
+letting values be [ [  5, 3, 0, 0, 7, 0, 0, 0 ,0 ],
+                            [ 6, 0, 0, 1, 9, 5, 0, 0, 0 ], 
+                            [ 0, 9, 8, 0, 0, 0, 0, 6, 0 ],
+                            [ 8, 0, 0, 0, 6, 0, 0, 0, 3 ],
+                            [ 4, 0, 0, 8, 0, 3, 0, 0, 1 ],
+                            [ 7, 0, 0, 0, 2, 0, 0, 0, 6 ],
+                            [ 0, 6, 0, 0, 0, 0, 2, 8, 0 ], 
+                            [ 0, 0, 0, 4, 1, 9, 0, 0, 5 ],
+                            [ 0, 0, 0, 0, 8, 0, 0, 7, 9 ]] 
+$$ model file: savile-row/test-instances/sudoku2.eprime
+
+letting VALUES be domain int(0..9)
+$ given values : matrix indexed by [RANGE,RANGE] of VALUES
+letting RANGE be domain int(1..9)
+find field : matrix indexed by [RANGE,RANGE] of RANGE
+such that
+(forAll row : RANGE . allDiff(field[row,..])),
+(forAll col : RANGE . allDiff(field[..,col])),
+(forAll i : int(0..2) . (forAll j : int(0..2) . (forAll col1 : int(1..3) . (forAll col2 : int(1..3) . (forAll row1 : int(1..3) . (forAll row2 : int(1..3) . (((((col1!=col2)) /\ ((row1!=row2)))) -> ((field[(row1 + ((i * 3))), (col1 + ((j * 3)))]!=field[(row2 + ((i * 3))), (col2 + ((j * 3)))]))))))))),
+(forAll row : RANGE . (forAll col : RANGE . (((0<values[row, col])) -> ((field[row, col]=values[row, col])))))

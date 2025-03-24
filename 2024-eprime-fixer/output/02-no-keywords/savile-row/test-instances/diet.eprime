@@ -1,0 +1,18 @@
+language ESSENCE' 1.0
+given n : int(..)
+given p : int(..)
+given price : matrix indexed by [int(1..p)] of int(1..100)
+given tlimits : matrix indexed by [int(1..p)] of int(1..1000)
+given calories : matrix indexed by [int(1..n)] of int(1..1000)
+given chocolate : matrix indexed by [int(1..n)] of int(0..100)
+given sugar : matrix indexed by [int(1..n)] of int(1..100)
+given fat : matrix indexed by [int(1..n)] of int(1..100)
+find x : matrix indexed by [int(1..p)] of int(0..1000)
+find cost : int(0..10000)
+minimising cost
+such that
+(cost=((sum i : int(1..p) . (x[i] * price[i])))),
+(tlimits[1]<=((sum i : int(1..n) . (x[i] * calories[i])))),
+(tlimits[2]<=((sum i : int(1..n) . (x[i] * chocolate[i])))),
+(tlimits[3]<=((sum i : int(1..n) . (x[i] * sugar[i])))),
+(tlimits[4]<=((sum i : int(1..n) . (x[i] * fat[i]))))

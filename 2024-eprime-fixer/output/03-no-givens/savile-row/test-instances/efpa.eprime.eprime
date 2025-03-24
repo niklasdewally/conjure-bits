@@ -1,0 +1,24 @@
+$$ param file: savile-row/test-instances/efpa.eprime.param
+
+language ESSENCE' 1.0
+$ Equidistant Frequency Permutation Arrays.
+$ Details available from CP paper. 
+
+letting d=3      $ the hamming distance between all pairs of words.
+letting lam=7    $ Occurrences of each symbol
+letting q=7      $ Number of symbols
+letting numCodeWords=7      $ aka v, number of words
+
+$$ model file: savile-row/test-instances/efpa.eprime
+
+$ given d : int(1..)
+$ given lam : int(1..)
+$ given q : int(1..)
+$ given numCodeWords : int(1..)
+letting wordLength be (lam * q)
+find c : matrix indexed by [int(0..(numCodeWords - 1)),int(0..(wordLength - 1))] of int(0..(q - 1))
+such that
+(forAll row : int(0..(numCodeWords - 1)) . gcc(c[row,..],[i|i : int(0..(q - 1)), () ],[lam|i : int(0..(q - 1)), () ])),
+(forAll row1 : int(0..(numCodeWords - 1)) . (forAll row2 : int(0..(numCodeWords - 1)) . (((row1<row2)) -> ((((sum i : int(0..(wordLength - 1)) . ((c[row1, i]!=c[row2, i]))))=d))))),
+(forAll row : int(0..(numCodeWords - 2)) . (c[row,..] <lex c[(row + 1),..])),
+(forAll col : int(0..(wordLength - 2)) . (c[..,col] <=lex c[..,(col + 1)]))

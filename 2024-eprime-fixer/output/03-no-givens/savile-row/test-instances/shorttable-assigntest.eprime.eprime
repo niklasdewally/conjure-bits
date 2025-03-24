@@ -1,0 +1,21 @@
+$$ param file: savile-row/test-instances/shorttable-assigntest.eprime.param
+
+language ESSENCE' 1.0
+
+letting mycon=[
+[[1,0],[4,1],[2,3],[3,3]],
+[[2,0],[4,2]],
+[[3,0],[4,4],[5,5]],
+[[1,1],[2,1],[3,1],[4,1],[5,1]]
+]
+
+
+
+$$ model file: savile-row/test-instances/shorttable-assigntest.eprime
+
+$ given mycon : matrix indexed by [int(1..n),int(..),int(1..2)] of int(..)
+find x : matrix indexed by [int(1..5)] of int(0..5)
+such that
+tableshort([x[1], x[2], x[3], x[4], x[5]], mycon),
+(x[3]=3),
+(x[4]=1)

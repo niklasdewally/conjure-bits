@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+letting dom be (int(3..5) - int(0..9))
+find x : (int((-1)) union dom)
+such that
+(exists i : dom . (x=i)),
+(forAll i : dom . (i<=x))

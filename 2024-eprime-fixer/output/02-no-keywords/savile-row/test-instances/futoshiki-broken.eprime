@@ -1,0 +1,14 @@
+language ESSENCE' 1.0
+letting SIZE be 5
+letting NUMQD be domain int(0..lastdx)
+letting RANGE be domain int(1..SIZE)
+letting VALUES be domain int(0..SIZE)
+given values : matrix indexed by [RANGE,RANGE] of VALUES
+given lastdx : int(1..(((((2 * SIZE) * ((SIZE - 1))) - 1))))
+given lt : matrix indexed by [NUMQD,int(0..3)] of RANGE
+find field : matrix indexed by [RANGE,RANGE] of RANGE
+such that
+(forAll row : RANGE . allDiff(field[row,..])),
+(forAll col : RANGE . allDiff(field[..,col])),
+(forAll i : NUMQD . ((field[lt[i, 0], lt[i, 1]]<field[lt[i, 2], lt[i, 3]]))),
+(forAll row : RANGE . (forAll col : RANGE . (((0<values[row, col])) -> ((field[row, col]=values[row, col])))))

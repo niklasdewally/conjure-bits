@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+given n : int(..)
+letting N be domain int(1..n)
+letting theSum be (((n * (((n * n) + 1))))/2)
+find magicSquare : matrix indexed by [N,N] of int(1..(n * n))
+such that
+allDiff(flatten(magicSquare)),
+(theSum<((((n * n) * n) - ((sum i : int(1..(n - 1)) . i))))),
+(((sum i : int(1..n) . i))<theSum),
+(forAll row : N . (((sum col : N . magicSquare[row, col]))=theSum)),
+(forAll col : N . (((sum row : N . magicSquare[row, col]))=theSum)),
+(((sum i : N . magicSquare[i, i]))=theSum)

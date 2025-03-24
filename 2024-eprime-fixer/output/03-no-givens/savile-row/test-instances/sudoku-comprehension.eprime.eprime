@@ -1,0 +1,26 @@
+$$ param file: savile-row/test-instances/sudoku-comprehension.eprime.param
+
+language ESSENCE' 1.0
+letting size_=9
+letting subsize_=3
+letting values=[ [  5, 3, 0, 0, 7, 0, 0, 0 ,0 ],
+                            [ 6, 0, 0, 1, 9, 5, 0, 0, 0 ], 
+                            [ 0, 9, 8, 0, 0, 0, 0, 6, 0 ],
+                            [ 8, 0, 0, 0, 6, 0, 0, 0, 3 ],
+                            [ 4, 0, 0, 8, 0, 3, 0, 0, 1 ],
+                            [ 7, 0, 0, 0, 2, 0, 0, 0, 6 ],
+                            [ 0, 6, 0, 0, 0, 0, 2, 8, 0 ], 
+                            [ 0, 0, 0, 4, 1, 9, 0, 0, 5 ],
+                            [ 0, 0, 0, 0, 8, 0, 0, 7, 9 ]] 
+$$ model file: savile-row/test-instances/sudoku-comprehension.eprime
+
+$ given size_ : int(..)
+$ given subsize_ : int(..)
+letting RANGE be domain int(0..(size_ - 1))
+$ given values : matrix indexed by [RANGE,RANGE] of int(0..size_)
+find field : matrix indexed by [RANGE,RANGE] of RANGE
+such that
+(forAll row : RANGE . allDiff(field[row,..])),
+(forAll col : RANGE . allDiff(field[..,col])),
+(forAll i : int(0..(subsize_ - 1)) . (forAll j : int(0..(subsize_ - 1)) . allDiff([field[k, l]|k : int((i * subsize_)..((((i + 1)) * subsize_) - 1)), l : int((j * subsize_)..((((j + 1)) * subsize_) - 1)), () ]))),
+(forAll row : RANGE . (forAll col : RANGE . (((0<values[row, col])) -> ((field[row, col]=(values[row, col] - 1))))))

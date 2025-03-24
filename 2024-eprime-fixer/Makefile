@@ -16,7 +16,7 @@ NO_KEYWORDS_PARAMS := $(INPUT_PARAMS:input/%.param=output/02-no-keywords/%.param
 ## The entry-point
 
 .PHONY: all 
-all: $(NORMALISED) $(NORMALISED_PARAMS) $(NO_KEYWORDS) $(NO_KEYWORDS_PARAMS) output/03-no-givens/.timestamp output/03-noparses/.timestamp output/03-parses/.timestamp
+all: $(NORMALISED) $(NORMALISED_PARAMS) $(NO_KEYWORDS) $(NO_KEYWORDS_PARAMS) output/03-no-givens/.timestamp output/03b-noparses/.timestamp output/03a-parses/.timestamp
 
 ## Rules
 
@@ -52,12 +52,12 @@ output/03-no-givens/.timestamp: $(NO_KEYWORDS)  $(NO_KEYWORDS_PARAMS) $(SUBSTITU
 	
 
 
-output/03-noparses/.timestamp output/03-parses/.timestamp: output/03-no-givens/.timestamp $(CHECK_CONJURE_PARSES)
-	mkdir -p output/03-noparses
-	mkdir -p output/03-parses
+output/03b-noparses/.timestamp output/03a-parses/.timestamp: output/03-no-givens/.timestamp $(CHECK_CONJURE_PARSES)
+	mkdir -p output/03b-noparses
+	mkdir -p output/03a-parses
 	$(CHECK_CONJURE_PARSES)
-	touch	output/03-parses/.timestamp
-	touch	output/03-noparses/.timestamp
+	touch	output/03a-parses/.timestamp
+	touch	output/03b-noparses/.timestamp
 
 
 ## Phonies

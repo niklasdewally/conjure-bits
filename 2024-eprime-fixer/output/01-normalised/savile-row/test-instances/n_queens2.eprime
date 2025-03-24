@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+given n : int(..)
+letting AMOUNT_QUEENS be domain int(0..(n - 1))
+find queens : matrix indexed by [AMOUNT_QUEENS] of AMOUNT_QUEENS
+such that
+allDiff(queens),
+(forAll i : AMOUNT_QUEENS . (forAll j : AMOUNT_QUEENS . (((j<i)) -> (((((queens[i] - i)!=(queens[j] - j))) /\ (((queens[i] + i)!=(queens[j] + j)))))))),
+(queens[0]=0)

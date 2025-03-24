@@ -1,0 +1,22 @@
+$$ param file: savile-row/test-instances/bibd-implied.eprime.param
+
+language ESSENCE' 1.0
+letting v be 12
+letting k be 3
+letting l be 4
+
+$$ model file: savile-row/test-instances/bibd-implied.eprime
+
+$ given v : int(..)
+$ given k : int(..)
+$ given l : int(..)
+letting b be ((((l * v) * ((v - 1))))/((k * ((k - 1)))))
+letting r be (((l * ((v - 1))))/((k - 1)))
+find bibd : matrix indexed by [int(1..v),int(1..b)] of bool
+such that
+(forAll block : int(1..b) . (((sum object : int(1..v) . bibd[object, block]))=k)),
+(forAll object : int(1..v) . (((sum block : int(1..b) . bibd[object, block]))=r)),
+(forAll object1 : int(1..v) . (forAll object2 : int(1..v) . (((object1<object2)) -> ((((sum block : int(1..b) . (bibd[object1, block] * bibd[object2, block])))=l))))),
+(forAll obj : int(3..v) . (((((((sum block : int(1..(b - r)) . bibd[obj, block]))=(r - l))) /\ ((((sum block : int(((b - r) + 1)..b) . bibd[obj, block]))=l))) /\ ((((sum block : (int(1..((b - (2 * r)) + l)) union int(((b - r) + 1)..(b - l))) . bibd[obj, block]))=(r - l)))) /\ ((((sum block : (int((((b - (2 * r)) + l) + 1)..(b - r)) union int(((b - l) + 1)..b)) . bibd[obj, block]))=l)))),
+(forAll row : int(1..(v - 1)) . (bibd[row,..] <=lex bibd[(row + 1),..])),
+(forAll col : int(1..(b - 1)) . (bibd[..,col] <=lex bibd[..,(col + 1)]))

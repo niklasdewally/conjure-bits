@@ -1,0 +1,7 @@
+$$ param file: savile-row/test-instances/alldiff_except.eprime.param
+
+$$ model file: savile-row/test-instances/alldiff_except.eprime
+
+find x : matrix indexed by [int(1..10)] of int(0..10)
+such that
+alldifferent_except(x,0)

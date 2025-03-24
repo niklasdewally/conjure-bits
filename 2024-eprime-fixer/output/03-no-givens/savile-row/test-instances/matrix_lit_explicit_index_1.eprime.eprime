@@ -1,0 +1,9 @@
+$$ param file: savile-row/test-instances/matrix_lit_explicit_index_1.eprime.param
+
+language ESSENCE' 1.0
+
+$$ model file: savile-row/test-instances/matrix_lit_explicit_index_1.eprime
+
+find x : int(0..9)
+such that
+(x=[1, 2, 3;int(4..6)][4])

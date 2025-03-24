@@ -1,0 +1,32 @@
+$$ param file: savile-row/test-instances/nurse.eprime.param
+
+language ESSENCE' 1.0
+
+letting n_nurses be 4
+letting Demand be  [[1,0,1,0],
+                [0,2,1,0],
+		[1,2,1,0],
+		[1,1,0,0],
+		[2,0,1,0],
+		[1,1,1,0],
+		[0,2,0,0]]
+$$ model file: savile-row/test-instances/nurse.eprime
+
+$ given n_nurses : int(1..)
+letting NURSE be domain int(1..n_nurses)
+letting DAY be domain int(0..6)
+letting SHIFT be domain int(0..3)
+letting morning be 0
+letting afternoon be 1
+letting overnight be 2
+letting dayoff be 3
+$ given Demand : matrix indexed by [DAY,SHIFT] of int(0..n_nurses)
+find Roster : matrix indexed by [DAY,NURSE] of SHIFT
+such that
+(forAll d : DAY . (forAll s : SHIFT . (Demand[d, s]<=((sum n : NURSE . (Roster[d, n]=s)))))),
+(forAll n : NURSE . (exists d : DAY . (Roster[d, n]=dayoff))),
+(forAll n : NURSE . (exists d : DAY . (Roster[d, n]=overnight))),
+(forAll n : NURSE . (((sum d : DAY . (Roster[d, n]=morning)))<=4)),
+(forAll d : DAY . (forAll s : SHIFT . (((sum n : NURSE . (Roster[d, n]=s)))<(n_nurses/2)))),
+(forAll n : NURSE . (forAll d : DAY . (((Roster[d, n]=overnight)) -> ((((Roster[(((d + 1))%7), n]=overnight)) \/ ((Roster[(((d + 1))%7), n]=dayoff))))))),
+(forAll n : NURSE . (((sum d : DAY . (Roster[d, n]=overnight)))<=((sum d : DAY . (Roster[d, n]=morning)))))

@@ -1,0 +1,14 @@
+language ESSENCE' 1.0
+given n : int(1..1000)
+letting nDomain be domain int(0..(n - 1))
+find quasiGroup : matrix indexed by [nDomain,nDomain] of nDomain
+find qgDiagonal : matrix indexed by [nDomain] of nDomain
+such that
+(forAll i : nDomain . (qgDiagonal[i]=quasiGroup[i, i])),
+(forAll row : nDomain . allDiff(quasiGroup[row,..])),
+(forAll col : nDomain . allDiff(quasiGroup[..,col])),
+(forAll i : nDomain . (forAll j : nDomain . (quasiGroup[quasiGroup[j, i], quasiGroup[i, j]]=i))),
+allDiff(qgDiagonal),
+(forAll i : nDomain . (forAll j : nDomain . (((i!=j)) -> ((quasiGroup[i, j]!=quasiGroup[j, i]))))),
+(forAll i : nDomain . (forAll j : nDomain . (((quasiGroup[i, i]=j)) -> ((quasiGroup[j, j]=i))))),
+(forAll i : nDomain . (i<=(quasiGroup[i, (n - 1)] + 2)))

@@ -1,0 +1,15 @@
+$$ param file: savile-row/test-instances/quantification_over_matrix_doms_4.eprime.param
+
+language ESSENCE' 1.0
+
+letting a be 5
+letting b be 3
+letting c be 7
+$$ model file: savile-row/test-instances/quantification_over_matrix_doms_4.eprime
+
+$ given a : int(..)
+$ given b : int(..)
+$ given c : int(..)
+find x : int(1..20)
+such that
+(exists i : matrix indexed by [(int(a) union int(b..c)),(int(a..b) union int(c))] of int(0..9) . allDiff(flatten(i)))

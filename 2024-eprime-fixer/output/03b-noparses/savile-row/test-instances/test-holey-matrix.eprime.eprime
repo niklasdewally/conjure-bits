@@ -1,0 +1,9 @@
+$$ param file: savile-row/test-instances/test-holey-matrix.eprime.param
+
+$$ model file: savile-row/test-instances/test-holey-matrix.eprime
+
+find y : int((-5)..5)
+find z : matrix indexed by [(((int(2) union int(4)) union int(6)) union int(8))] of int(0..10)
+find q : bool
+such that
+(((z[y]=1)) <-> q)

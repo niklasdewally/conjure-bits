@@ -1,0 +1,10 @@
+$$ param file: savile-row/test-instances/semigroup.eprime.param
+
+language ESSENCE' 1.0
+letting n be 5
+$$ model file: savile-row/test-instances/semigroup.eprime
+
+$ given n : int(..)
+find M : matrix indexed by [int(1..n),int(1..n)] of int(1..n)
+such that
+(forAll i : int(1..n) . (forAll j : int(1..n) . (forAll k : int(1..n) . ((M[i, M[j, k]]=M[M[i, j], k])))))

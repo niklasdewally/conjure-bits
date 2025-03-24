@@ -1,0 +1,30 @@
+$$ param file: savile-row/test-instances/sonet2.eprime.param
+
+
+letting m = 10
+letting n = 7
+letting r = 4
+
+letting demand =
+        [[0,1,1,1,0,0,0],
+         [0,0,0,0,0,0,1],
+         [0,0,0,1,0,1,0],
+         [0,0,0,0,0,0,0],
+         [0,0,0,0,0,1,1],
+         [0,0,0,0,0,0,1],
+         [0,0,0,0,0,0,0]]
+
+
+$$ model file: savile-row/test-instances/sonet2.eprime
+
+$ given m : int(1..)
+$ given n : int(1..)
+$ given r : int(1..)
+$ given demand : matrix indexed by [int(1..n),int(1..n)] of int(0..1)
+where FailWhenFalse((forAll i : int(1..n) . (forAll j : int(1..n) . ((((j<=i)) -> ((demand[i, j]=0)))))))
+find rings : matrix indexed by [int(1..m),int(1..n)] of bool
+minimising (sum ring : int(1..m) . (sum client : int(1..n) . rings[ring, client]))
+such that
+(forAll client1 : int(1..n) . (forAll client2 : int(1..n) . ((((client1<client2)) -> ((((demand[client1, client2]=1)) -> (exists ring : int(1..m) . (2<=(rings[ring, client1] + rings[ring, client2]))))))))),
+(forAll ring : int(1..m) . (((sum client : int(1..n) . rings[ring, client]))<=r)),
+(true -> ((forAll ring1 : int(1..(m - 1)) . (rings[ring1,..] <=lex rings[(ring1 + 1),..]))))

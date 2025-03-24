@@ -1,0 +1,21 @@
+$$ param file: savile-row/test-instances/n_queens1.eprime.param
+
+language ESSENCE' 1.0
+letting n be 8
+$$ model file: savile-row/test-instances/n_queens1.eprime
+
+$ given n : int(1..1000)
+letting AMOUNT_QUEENS be domain int(0..(n - 1))
+find q1 : matrix indexed by [AMOUNT_QUEENS] of AMOUNT_QUEENS
+find q2 : matrix indexed by [AMOUNT_QUEENS] of int((-((n - 1)))..(n - 1))
+find q3 : matrix indexed by [AMOUNT_QUEENS] of int(0..(((n - 1)) * 2))
+such that
+allDiff(q1),
+allDiff(q2),
+allDiff(q3),
+(q1[0]=0),
+(q2[0]=0),
+(q3[0]=0),
+(forAll i : AMOUNT_QUEENS . ((((((q2[i] + i)<=q1[i])) /\ (((q1[i] - i)<=q2[i]))) /\ (((q1[i] + i)<=q3[i]))) /\ (((q3[i] - i)<=q1[i])))),
+(forAll i : AMOUNT_QUEENS . (((q2[i]<=(((n - 1)) - i))) /\ (((-i)<=q2[i])))),
+(forAll i : AMOUNT_QUEENS . (((q3[i]<=(i + ((n - 1))))) /\ ((i<=q3[i]))))

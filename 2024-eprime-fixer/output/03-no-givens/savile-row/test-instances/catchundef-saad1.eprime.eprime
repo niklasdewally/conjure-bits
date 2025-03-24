@@ -1,0 +1,12 @@
+$$ param file: savile-row/test-instances/catchundef-saad1.eprime.param
+
+$$ model file: savile-row/test-instances/catchundef-saad1.eprime
+
+letting weights be [0, 1, 2, 3, 4, 5;int(0..5)]
+find set_Size : int(1..5)
+find set_Values : matrix indexed by [int(1..5)] of int(0..5)
+find set_Weight : int(0..sum(weights))
+such that
+(forAll i : int(1..5) . ((((set_Size<i) <-> (set_Values[i]=0))) /\ (((i<set_Size) -> (set_Values[i]<set_Values[(i + 1)]))))),
+(1<set_Size),
+(set_Weight=(sum i : int(1..5) . (catchUndef(weights[set_Values[i]], 0) * toInt((i<=set_Size)))))

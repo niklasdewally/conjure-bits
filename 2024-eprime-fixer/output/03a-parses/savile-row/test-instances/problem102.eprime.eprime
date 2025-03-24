@@ -1,0 +1,7 @@
+$$ param file: savile-row/test-instances/problem102.eprime.param
+
+$$ model file: savile-row/test-instances/problem102.eprime
+
+find unused : bool
+such that
+[false, false][(5%((1%0)))]

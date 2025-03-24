@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+letting dom be (((int(1) union int(3)) union ((int(5) union int(15)) union int(20))) union ((int(0..60) - (int(4..6) intersect (int(10) union int(15))))))
+find x : (int((-1)) union dom)
+such that
+(exists i : dom . (x=i)),
+(forAll i : dom . (i<=x))

@@ -1,0 +1,15 @@
+$$ param file: savile-row/test-instances/grocery.eprime.param
+
+$$ model file: savile-row/test-instances/grocery.eprime
+
+letting RANGE be domain int(0..711)
+find item1 : RANGE
+find item2 : RANGE
+find item3 : RANGE
+find item4 : RANGE
+such that
+(((((item1 + item2) + item3) + item4)=711)),
+(((((item1 * item2) * item3) * item4)=(((711 * 100) * 100) * 100))),
+((item2<=item1)),
+((item3<=item2)),
+((item4<=item3))

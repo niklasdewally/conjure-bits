@@ -1,0 +1,19 @@
+language ESSENCE' 1.0
+given n_nurses : int(1..)
+letting NURSE be domain int(1..n_nurses)
+letting DAY be domain int(0..6)
+letting SHIFT be domain int(0..3)
+letting morning be 0
+letting afternoon be 1
+letting overnight be 2
+letting dayoff be 3
+given Demand : matrix indexed by [DAY,SHIFT] of int(0..n_nurses)
+find Roster : matrix indexed by [DAY,NURSE] of SHIFT
+such that
+(forAll d : DAY . (forAll s : SHIFT . (Demand[d, s]<=((sum n : NURSE . (Roster[d, n]=s)))))),
+and([or([(Roster[d, n]=dayoff)|d : DAY, () ;int(1..)])|n : NURSE, () ;int(1..)]),
+and([or([(Roster[d, n]=overnight)|d : DAY, () ;int(1..)])|n : NURSE, () ;int(1..)]),
+and([(sum([(Roster[d, n]=morning)|d : DAY, () ;int(1..)])<=4)|n : NURSE, () ;int(1..)]),
+and([(sum([(Roster[d, n]=s)|n : NURSE, () ;int(1..)])<(n_nurses/2))|d : DAY, s : SHIFT, () ;int(1..)]),
+(forAll n : NURSE . (forAll d : DAY . (((Roster[d, n]=overnight)) -> ((((Roster[(((d + 1))%7), n]=overnight)) \/ ((Roster[(((d + 1))%7), n]=dayoff))))))),
+(forAll n : NURSE . (((sum d : DAY . (Roster[d, n]=overnight)))<=((sum d : DAY . (Roster[d, n]=morning)))))

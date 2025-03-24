@@ -1,0 +1,9 @@
+$$ param file: savile-row/test-instances/iff-typecheck-test.eprime.param
+
+$$ model file: savile-row/test-instances/iff-typecheck-test.eprime
+
+letting TICKS be domain int(0..4)
+find x : int(0..4)
+find y : int(0..4)
+such that
+(x <-> y)

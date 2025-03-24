@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+given n : int(..)
+letting N be domain int(1..n)
+find board : matrix indexed by [N,N] of int(0..2)
+find amountOfQueens : int(1..(((n * n))/2))
+maximising amountOfQueens
+such that
+(((sum row : N . ((sum col : N . ((board[row, col]=1))))))=amountOfQueens),
+(((sum row : N . ((sum col : N . ((board[row, col]=2))))))=amountOfQueens),
+(forAll row : N . (forAll col1 : N . (forAll col2 : N . (((col1<col2)) -> (((board[row, col1] + board[row, col2])!=3)))))),
+(forAll col : N . (forAll row1 : N . (forAll row2 : N . (((row1<row2)) -> (((board[row1, col] + board[row2, col])!=3)))))),
+(forAll i : N . (forAll col1 : N . (forAll col2 : N . (forAll row1 : N . (forAll row2 : N . ((((((((((row1 + i)<=n)) /\ (((col1 + i)<=n)))) -> (((((((row1 + i)=row2)) /\ (((col1 + i)=col2)))) -> (((board[row1, col1] + board[row2, col2])!=3)))))) /\ (((((((row1 + i)<=n)) /\ ((0<(col1 - i))))) -> (((((((row1 + i)=row2)) /\ (((col1 - i)=col2)))) -> (((board[row1, col1] + board[row2, col2])!=3))))))) /\ ((((((0<(row1 - i))) /\ ((0<(col1 - i))))) -> (((((((row1 - i)=row2)) /\ (((col1 - i)=col2)))) -> (((board[row1, col1] + board[row2, col2])!=3))))))) /\ ((((((0<(row1 - i))) /\ (((col1 + i)<=n)))) -> (((((((row1 - i)=row2)) /\ (((col1 + i)=col2)))) -> (((board[row1, col1] + board[row2, col2])!=3))))))))))))

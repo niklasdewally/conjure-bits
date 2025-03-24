@@ -1,3 +1,5 @@
+$$ param file: hakank/quasigroup_completion3.param
+
 $ Example from Ruben Martins and Ines Lynce
 $ Breaking Local Symmetries in Quasigroup Completion Problems, page 3
 $ The solution is unique:
@@ -19,6 +21,7 @@ letting mat be
  ]
 
 
+$$ model file: hakank/quasigroup_completion.eprime
 
 $ given n : int(..)
 $ given mat : matrix indexed by [int(1..n),int(1..n)] of int(0..n)

@@ -1,9 +1,12 @@
+$$ param file: hakank/discrete_tomography1.param
+
 language ESSENCE' 1.0
 letting r be 11
 letting c be 12
 letting row_sums be [0,0,8,2,6,4,5,3,7,0,0]
 letting col_sums be [0,0,7,1,6,3,4,5,2,7,0,0]
 
+$$ model file: hakank/discrete_tomography.eprime
 
 $ given r : int(..)
 letting rows be domain int(1..r)

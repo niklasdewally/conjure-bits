@@ -1,3 +1,5 @@
+$$ param file: hakank/survo_puzzle6.param
+
 $ http://www.survo.fi/puzzles/280708.txt, third puzzle
 $ Survo puzzle 128/2008 (1700) #364-35846
 $
@@ -17,6 +19,7 @@ letting game be
      [0, 0, 18, 0, 0, 0],
      [0, 0,  0, 0, 0, 0]
    ]
+$$ model file: hakank/survo_puzzle.eprime
 
 $ given r : int(..)
 $ given c : int(..)

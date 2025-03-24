@@ -1,3 +1,5 @@
+$$ param file: hakank/hidato2.param
+
 language ESSENCE' 1.0
 $ solution 
 $ 45 44 41 40 39 30 31
@@ -20,6 +22,7 @@ letting puzzle be
       [ 0, 0, 0,14, 0, 0, 0]
     ]
  
+$$ model file: hakank/hidato.eprime
 
 $ given n : int(1..100)
 $ given puzzle : matrix indexed by [int(1..n),int(1..n)] of int(0..(n * n))

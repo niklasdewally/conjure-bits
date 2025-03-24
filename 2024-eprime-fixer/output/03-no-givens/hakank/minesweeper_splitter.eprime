@@ -1,3 +1,5 @@
+$$ param file: hakank/minesweeper_splitter.param
+
 language ESSENCE' 1.0
 $ Richard Kaye: How Complicated is Minesweeper?
 $ http://web.mat.bham.ac.uk/R.W.Kaye/minesw/ASE2003.pdf
@@ -18,6 +20,7 @@ letting game be [
   [-1,-1,-1,0,1,-1,1,0,-1,-1,-1],
   [-1,-1,-1,0,-1,-1,-1,0,-1,-1,-1]
  ]
+$$ model file: hakank/minesweeper.eprime
 
 $ given r : int(..)
 $ given c : int(..)

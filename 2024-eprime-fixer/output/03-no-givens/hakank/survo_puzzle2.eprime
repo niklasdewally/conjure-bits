@@ -1,3 +1,5 @@
+$$ param file: hakank/survo_puzzle2.param
+
 $ http://en.wikipedia.org/wiki/Survo_Puzzle, second example
 $ difficulty 0
 language ESSENCE' 1.0
@@ -10,6 +12,7 @@ letting game be
       [0, 0, 3],
       [0, 6, 0]
     ]
+$$ model file: hakank/survo_puzzle.eprime
 
 $ given r : int(..)
 $ given c : int(..)

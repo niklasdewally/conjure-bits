@@ -1,3 +1,5 @@
+$$ param file: hakank/survo_puzzle1.param
+
 $ http://en.wikipedia.org/wiki/Survo_Puzzle, first example
 language ESSENCE' 1.0
 letting r be 3
@@ -9,6 +11,7 @@ letting game be [
           [8, 0, 0, 0],
           [0, 0, 3, 0]
           ]
+$$ model file: hakank/survo_puzzle.eprime
 
 $ given r : int(..)
 $ given c : int(..)

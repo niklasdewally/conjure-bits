@@ -1,3 +1,5 @@
+$$ param file: hakank/quasigroup_completion7.param
+
 $ Problem from http://www.cs.cornell.edu/gomes/QUASIdemo.html
 $ (n = 10)
 $ Pattern #3. 
@@ -28,6 +30,7 @@ letting mat be [
       [0, 0, 0, 4,10, 3, 9, 0, 0, 0], 
       [0, 0, 0, 0, 4, 9, 0, 0, 0, 0]
     ]
+$$ model file: hakank/quasigroup_completion.eprime
 
 $ given n : int(..)
 $ given mat : matrix indexed by [int(1..n),int(1..n)] of int(0..n)

@@ -1,3 +1,5 @@
+$$ param file: hakank/quasigroup_completion4.param
+
 $ Example from Global Constraint Catalogue
 $ http://www.emn.fr/x-info/sdemasse/gccat/sec2.7.108.html
 $
@@ -10,6 +12,7 @@ letting mat be [
        [3, 0, 0, 0],
        [0, 0, 0, 1]
      ]
+$$ model file: hakank/quasigroup_completion.eprime
 
 $ given n : int(..)
 $ given mat : matrix indexed by [int(1..n),int(1..n)] of int(0..n)

@@ -45,7 +45,13 @@ for eprime_file in $(find "${SEARCH_DIR}" -iname '*.eprime'); do
       echo_info "  .... making model ${model_out}"
       # skip language declaration in the model, as its already in the params
       # also comment out givens
-      sed 's/^language .*$//g;s/^\(given.*\)$/\$ \1/' ${eprime_file} | cat "${param_file}" - > ${model_out}
+      sed '/^language .*$/d;s/^\(given.*\)$/\$ \1/' ${eprime_file} |\
+        cat <(echo "\$\$ param file: ${param_base}.param")\
+        <(echo "")\
+        ${param_file}\
+        <(echo "\$\$ model file: ${file_base}.eprime")\
+        <(echo "")\
+        - > ${model_out}
 
     done
   else

@@ -1,3 +1,5 @@
+$$ param file: hakank/minesweeper8.param
+
 language ESSENCE' 1.0
 $ Problem from Gecode/examples/minesweeper.cc  problem 8
 letting r be 7
@@ -12,6 +14,7 @@ letting game be [
        [-1,-1,-1,-1,-1,-1,-1]
    ]
 
+$$ model file: hakank/minesweeper.eprime
 
 $ given r : int(..)
 $ given c : int(..)

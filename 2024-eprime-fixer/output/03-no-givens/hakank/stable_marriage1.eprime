@@ -1,3 +1,5 @@
+$$ param file: hakank/stable_marriage1.param
+
 language ESSENCE' 1.0
 
 $
@@ -20,6 +22,7 @@ letting rankMen  be
   [4, 3, 2, 1, 5]
  ]
 
+$$ model file: hakank/stable_marriage.eprime
 
 $ given n : int(..)
 letting people be domain int(1..n)

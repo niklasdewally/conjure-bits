@@ -1,3 +1,5 @@
+$$ param file: hakank/quasigroup_completion2.param
+
 $ Example from Gomes & Shmoys, page 7
 $ Two solutions.
 language ESSENCE' 1.0
@@ -9,6 +11,7 @@ letting mat be
       [0, 3, 0, 0],
       [0, 0, 0, 4]
     ]
+$$ model file: hakank/quasigroup_completion.eprime
 
 $ given n : int(..)
 $ given mat : matrix indexed by [int(1..n),int(1..n)] of int(0..n)

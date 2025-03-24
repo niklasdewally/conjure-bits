@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(a=3),
+(a=(sum i : int(1..n) . ((sum j : int(1..s_size_) . (x[i]=s[j])))))

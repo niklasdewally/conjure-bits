@@ -1,5 +1,0 @@
-language ESSENCE' 1.0
-such that
-(forAll i : int(1..num_sets) . ((sums[i]=((sum j : int(1..n) . (j * ((a[j]=i)))))) /\ (sums_squared[i]=(sum j : int(1..n) . ((j**2) * ((a[j]=i))))))),
-(forAll i : int(2..num_sets) . (((((sum j : int(1..n) . (a[j]=(i - 1))))=((sum j : int(1..n) . (a[j]=i)))) /\ (sums[(i - 1)]=sums[i])) /\ (sums_squared[(i - 1)]=sums_squared[i]))),
-(a[1]=1)

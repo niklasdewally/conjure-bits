@@ -2,9 +2,10 @@
 
 RENAME_KEYWORDS := scripts/rename_conjure_keywords.sh
 
+
 INPUTS := $(shell find input -iname '*.eprime')
-NORMALISED := $(INPUTS:input/%.eprime=output/normalised/%.eprime)
-FIXED := $(INPUTS:input/%.eprime=output/fixed/%.eprime)
+NORMALISED := $(INPUTS:input/%.eprime=output/01-normalised/%.eprime)
+FIXED := $(INPUTS:input/%.eprime=output/02-no-keywords/%.eprime)
 
 ## The entry-point
 
@@ -14,29 +15,16 @@ all: $(NORMALISED) $(FIXED)
 ## Rules
 
 # step 1: normalise syntax using sr
-output/normalised/%.eprime: input/%.eprime | output/normalised
+output/01-normalised/%.eprime: input/%.eprime 
 	mkdir -p $$(dirname "$@")
 	savilerow -dump-model $< > $@
 
 # step 2: remove conjure keywords
-output/fixed/%.eprime: output/normalised/%.eprime | output/fixed 
+output/02-no-keywords/%.eprime: output/01-normalised/%.eprime $(RENAME_KEYWORDS) 
 	mkdir -p $$(dirname "$@")
 	$(RENAME_KEYWORDS) $< > $@
 
-
 ## Folders
-
-input: 
-	mkdir input
-
-output/fixed: 
-	mkdir -p output/fixed
-
-output/normalised: 
-	mkdir -p output/normalised
-	
-output/nogivens: 
-	mkdir -p output/nogivens
 
 
 ## Phonies

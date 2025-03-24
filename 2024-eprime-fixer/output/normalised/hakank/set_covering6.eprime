@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising total_cost
+such that
+(forAll j : int(1..num_b) . (1<=((sum i : int(1..num_t) . (x[i] * mat[i, j]))))),
+(total_cost=(sum i : int(1..num_t) . (x[i] * t_costs[i])))

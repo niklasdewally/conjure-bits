@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(num=312),
+(num=(sum i : int(1..len) . ((base**((len - i))) * x[i])))

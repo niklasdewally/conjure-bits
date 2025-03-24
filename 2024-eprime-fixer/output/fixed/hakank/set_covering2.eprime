@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(forAll i : int(1..num_streets) . (1<=((sum j : int(1..n) . (x[corner[i, 1]] + x[corner[i, 2]]))))),
+(z=(sum j : int(1..n) . x[j]))

@@ -1,0 +1,63 @@
+$
+$ Minesweeper problem in Essence'.
+$
+$ From gecode/examples/minesweeper.cc:
+$ """
+$ A specification is a square matrix of characters. Alphanumeric characters 
+$ represent the number of mines adjacent to that field. Dots represent 
+$ fields with an unknown number of mines adjacent to it (or an actual mine).
+$ """
+$ 
+$ E.g.
+$      "..2.3."
+$      "2....."
+$      "..24.3"
+$      "1.34.."
+$      ".....3"
+$      ".3.3.."
+$ """
+$ 
+$ Also see 
+$  
+$ http://www.janko.at/Raetsel/Minesweeper/index.htm
+$  (the first 10 examples are from)
+$
+$ http://en.wikipedia.org/wiki/Minesweeper_(computer_game)
+$
+$ Ian Stewart on Minesweeper: http://www.claymath.org/Popular_Lectures/Minesweeper/
+$
+$ Richard Kaye's Minesweeper Pages
+$ http://web.mat.bham.ac.uk/R.W.Kaye/minesw/minesw.htm
+$ Some Minesweeper Configurations
+$ http://web.mat.bham.ac.uk/R.W.Kaye/minesw/minesw.pdf
+$
+$ Model created by Hakan Kjellerstrand, hakank@gmail.com
+$ See also my Essence'/Tailor page: http://www.hakank.org/savile_row/
+$
+language ESSENCE' 1.0
+
+given r : int $ rows
+given c : int $ column
+$ encoding: -1 for unknown, >= 0 for number of mines in the neighbourhood
+given game : matrix indexed by [int(1..r),int(1..c)] of int(-1..)
+
+letting X be -1 $ the unknowns
+letting AB be domain int(-1..1)
+letting rows be domain int(1..r)
+letting cols be domain int(1..c)
+
+
+find mines : matrix indexed by [rows,cols] of int(0..1)
+
+such that
+  forall i : rows . 
+     forall j : cols . 
+        (game[i,j]  > X -> mines[i,j] = 0) /\
+        (mines[i,j] = 1 -> game[i,j]  = X) /\
+        (
+         game[i,j] > X  ->
+         game[i,j] = sum([mines[i+a,j+b] | a,b : AB, 
+                          i+a >  0 /\ j+b  > 0 /\
+                          i+a <= r /\ j+b <= c
+                        ])
+        )

@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+such that
+allDiff(flatten(x)),
+(forAll i : rows . (forAll j : cols . ((0<game[i, j]) -> (x[i, j]=game[i, j])))),
+(forAll i : rows . (((sum j : cols . x[i, j]))=rowsums[i])),
+(forAll j : cols . (((sum i : rows . x[i, j]))=colsums[j]))

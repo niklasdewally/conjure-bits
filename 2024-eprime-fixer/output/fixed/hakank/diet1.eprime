@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+minimising cost
+such that
+(cost=(sum i : prange_ . (x[i] * price[i]))),
+(tlimits[1]<=((sum i : nrange_ . (x[i] * calories[i])))),
+(tlimits[2]<=((sum i : nrange_ . (x[i] * chocolate[i])))),
+(tlimits[3]<=((sum i : nrange_ . (x[i] * sugar[i])))),
+(tlimits[4]<=((sum i : nrange_ . (x[i] * fat[i]))))

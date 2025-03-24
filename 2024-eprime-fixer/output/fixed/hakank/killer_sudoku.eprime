@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+such that
+(forAll i : range_ . (allDiff(x[int(..),i]) /\ allDiff(x[i,int(..)]))),
+(forAll i : int(0..2) . (forAll j : int(0..2) . allDiff([x[r, c]|r : int(((i * 3) + 1)..((i * 3) + 3)), c : int(((j * 3) + 1)..((j * 3) + 3)), () ;int(1..)]))),
+(forAll p : int(1..num_p) . ((sum([x[P[p, ((2 * ((i - 1))) + 1)], P[p, ((2 * ((i - 1))) + 2)]]|i : int(1..num_hints), ((0<P[p, ((2 * ((i - 1))) + 1)])) ;int(1..)]))=P[p, ((2 * num_hints) + 1)]))

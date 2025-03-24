@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+such that
+(forAll k : int(2..12) . (standard_dist[k]=sum([((x1[i] + x2[j])=k)|i : int(1..n), j : int(1..n), () ;int(1..)]))),
+(forAll i : int(2..n) . ((x1[(i - 1)]<=x1[i]) /\ (x2[(i - 1)]<=x2[i]))),
+(forAll i : int(1..n) . (x1[i]<=x2[i]))

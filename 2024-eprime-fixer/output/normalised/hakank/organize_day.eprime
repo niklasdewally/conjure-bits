@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+such that
+(forAll i : range . (end[i]=(begin[i] + duration[i]))),
+(forAll i : range . (forAll j : range . (((i<j)) -> (((((begin[i] + duration[i])<=begin[j])) \/ (((begin[j] + duration[j])<=begin[i]))))))),
+(forAll i : int(1..2) . (end[before_tasks[i, 1]]<=begin[before_tasks[i, 2]])),
+(11<=begin[1])

@@ -1,0 +1,58 @@
+$
+$ Discrete tomography in Essence'.
+$
+$ Problem from http://eclipse.crosscoreop.com/examples/tomo.ecl.txt
+$ """
+$ This is a little "tomography" problem, taken from an old issue
+$ of Scientific American.
+$
+$ A matrix which contains zeroes and ones gets "x-rayed" vertically and
+$ horizontally, giving the total number of ones in each row and column.
+$ The problem is to reconstruct the contents of the matrix from this
+$ information. Sample run:
+$
+$ ?- go.
+$     0 0 7 1 6 3 4 5 2 7 0 0
+$  0                         
+$  0                         
+$  8      * * * * * * * *    
+$  2      *             *    
+$  6      *   * * * *   *    
+$  4      *   *     *   *    
+$  5      *   *   * *   *    
+$  3      *   *         *    
+$  7      *   * * * * * *    
+$  0                         
+$  0                         
+$
+$
+$ Eclipse solution by Joachim Schimpf, IC-Parc
+$ """
+$
+$ Compare with the following models: 
+$ * Comet: http://www.hakank.org/comet/discrete_tomography.co
+$ * Gecode: http://www.hakank.org/gecode/discrete_tomography.cpp
+$ * MiniZinc: http://www.hakank.org/minizinc/tomography.mzn
+$
+$ Model created by Hakan Kjellerstrand, hakank@gmail.com
+$ See also my Essence'/Tailor page: http://www.hakank.org/savile_row/
+$
+language ESSENCE' 1.0
+
+given r : int $ number of rows
+letting rows be domain int(1..r)
+given c : int $ number of columns
+letting cols be domain int(1..c)
+
+given row_sums : matrix indexed by [rows] of int(0..)
+given col_sums : matrix indexed by [cols] of int(0..)
+
+$ decision variable
+find x : matrix indexed by [rows, cols] of int(0..1)
+
+such that
+   $ the rows
+   forall i : rows . row_sums[i] = sum j : cols . x[i,j],
+
+   $ the columns
+   forall j : cols . col_sums[j] = sum i : rows . x[i,j]

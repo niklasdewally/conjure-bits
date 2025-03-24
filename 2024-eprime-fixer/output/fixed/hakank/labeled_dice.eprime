@@ -1,0 +1,7 @@
+language ESSENCE' 1.0
+such that
+(forAll i : Words . allDiff([dice[words[i, j]]|j : Cube, () ;int(1..)])),
+(forAll i : Cube . (((sum j : Letters . (dice[j]=i)))=6)),
+(dice[1]<=dice[7]),
+(dice[7]<=dice[13]),
+(dice[13]<=dice[19])

@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(z=(sum c : Workers . (Cost[c] * Hire[c]))),
+(forAll t : Tasks . (1<=((sum w : Workers . (((Qualified[t, w]=1)) * Hire[w])))))

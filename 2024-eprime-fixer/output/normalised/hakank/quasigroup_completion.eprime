@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(forAll i : int(1..n) . (forAll j : int(1..n) . ((0<mat[i, j]) -> (x[i, j]=mat[i, j])))),
+(forAll i : int(1..n) . (allDiff(x[i,int(..)]) /\ allDiff(x[int(..),i])))

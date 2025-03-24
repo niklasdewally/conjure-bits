@@ -1,0 +1,12 @@
+language ESSENCE' 1.0
+such that
+(color[France]!=color[Belgium]),
+(color[France]!=color[Luxembourg]),
+(color[France]!=color[Germany]),
+(color[Luxembourg]!=color[Germany]),
+(color[Luxembourg]!=color[Belgium]),
+(color[Belgium]!=color[Netherlands]),
+(color[Belgium]!=color[Germany]),
+(color[Germany]!=color[Netherlands]),
+(color[Germany]!=color[Denmark]),
+(color[Belgium]=1)

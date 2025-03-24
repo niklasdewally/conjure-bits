@@ -1,0 +1,7 @@
+language ESSENCE' 1.0
+minimising res
+such that
+allDiff([a, b, c, d, e, f, g, h, i, j]),
+(res=(((((((10000 * a) + (1000 * b)) + (100 * c)) + (10 * d)) + e)) - ((((((10000 * f) + (1000 * g)) + (100 * h)) + (10 * i)) + j)))),
+(0<a),
+(0<f)

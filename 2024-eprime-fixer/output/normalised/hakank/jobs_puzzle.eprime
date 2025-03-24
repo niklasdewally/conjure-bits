@@ -1,0 +1,23 @@
+language ESSENCE' 1.0
+such that
+(jobs[1]=chef),
+(jobs[2]=guard),
+(jobs[3]=nurse),
+(jobs[4]=clerk),
+(jobs[5]=police_officer),
+(jobs[6]=teacher),
+(jobs[7]=actor),
+(jobs[8]=boxer),
+gcc(jobs,[1, 2, 3, 4],[2, 2, 2, 2]),
+((nurse=Steve) \/ (nurse=Pete)),
+((clerk=Steve) \/ (clerk=Pete)),
+((chef=Roberta) \/ (chef=Thelma)),
+(chef!=clerk),
+(Roberta!=boxer),
+(Pete!=teacher),
+(Pete!=police_officer),
+(Pete!=nurse),
+(Roberta!=chef),
+(chef!=police_officer),
+(Roberta!=police_officer),
+((actor=Steve) \/ (actor=Pete))

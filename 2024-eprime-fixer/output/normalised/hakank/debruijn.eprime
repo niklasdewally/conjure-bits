@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+such that
+allDiff(x),
+(forAll i : int(1..m) . (x[i]=((sum j : int(1..n) . ((base**((n - j))) * binary[i, j]))))),
+(forAll i : int(2..m) . (forAll j : int(2..n) . (binary[(i - 1), j]=binary[i, (j - 1)]))),
+(forAll j : int(2..n) . (binary[m, j]=binary[1, (j - 1)])),
+(forAll i : int(1..m) . (bin_code[i]=binary[i, 1])),
+(forAll i : int(2..m) . (x[1]<x[i]))

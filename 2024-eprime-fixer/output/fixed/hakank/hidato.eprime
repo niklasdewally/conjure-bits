@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+such that
+allDiff(flatten(x)),
+(forAll i : int(1..n) . (forAll j : int(1..n) . ((0<puzzle[i, j]) -> (x[i, j]=puzzle[i, j])))),
+(forAll k : int(1..((n * n) - 1)) . (exists i : int(1..n) . (exists j : int(1..n) . ((k=x[i, j]) /\ (exists a : AB . (exists b : AB . ((((((1<=(i + a)) /\ (1<=(j + b))) /\ ((i + a)<=n)) /\ ((j + b)<=n)) /\ (!((((a=0)) /\ ((b=0)))))) /\ ((k + 1)=x[(i + a), (j + b)]))))))))

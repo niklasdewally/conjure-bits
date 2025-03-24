@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising num_coins
+such that
+(num_coins=sum(x)),
+(forAll j : coins . ((((sum i : range_ . (tmp[j, i] * variables[i])))=j) /\ (forAll i : range_ . (tmp[j, i]<=x[i]))))

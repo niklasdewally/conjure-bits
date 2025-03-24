@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+such that
+(z=((sum i : int(1..n) . (x[i]=0)))),
+(z=2),
+alldifferent_except(x,0),
+(forAll i : int(2..n) . (x[(i - 1)]<=x[i]))

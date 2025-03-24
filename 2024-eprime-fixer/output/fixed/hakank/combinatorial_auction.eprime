@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+maximising total_
+such that
+(total_=(sum i : int(1..num_bids) . (x[i] * bids[i]))),
+(forAll j : int(1..num_items) . (((sum i : int(1..num_bids) . (x[i] * packages[i, j])))<=1))

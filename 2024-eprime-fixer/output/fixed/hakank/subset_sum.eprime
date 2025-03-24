@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+such that
+(total_=(sum i : int(1..n) . (coins[i] * x[i]))),
+(ss=(sum i : int(1..n) . (0<x[i]))),
+(ss=3)

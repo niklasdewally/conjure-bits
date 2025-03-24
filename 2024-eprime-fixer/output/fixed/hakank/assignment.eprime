@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+minimising total__cost
+such that
+(forAll i : rows . (((sum j : cols . x[i, j]))=1)),
+(forAll j : cols . (((sum i : rows . x[i, j]))<=1)),
+(total__cost=(sum i : rows . (sum j : cols . (x[i, j] * cost[i, j]))))

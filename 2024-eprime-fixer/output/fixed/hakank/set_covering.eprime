@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(forAll j : int(1..numCities) . (1<=((sum i : int(1..numCities) . (x[i] * ((distance[i, j]<=min_distance))))))),
+(z=(sum i : int(1..numCities) . x[i]))

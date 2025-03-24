@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(z=(sum i : int(1..num_skiers) . |(ski_heights[x[i]] - skier_heights[i])|)),
+allDiff(x)

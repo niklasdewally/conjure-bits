@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+minimising sum_pref_points
+such that
+(forAll p : int(1..num_persons) . ((((sum j : int(1..num_combinations) . (((combinations_person[j]=p)) * x[j])))=1) /\ (preference_points[p]=(sum i : int(1..num_combinations) . (sum j : int(1..num_tasks) . (((((combinations_person[i]=p)) * x[i]) * c[i, j]) * preferences[p, j])))))),
+(forAll j : int(1..num_tasks) . (((sum i : int(1..num_combinations) . (x[i] * c[i, j])))=1)),
+(sum_pref_points=(sum i : int(1..num_persons) . preference_points[i]))

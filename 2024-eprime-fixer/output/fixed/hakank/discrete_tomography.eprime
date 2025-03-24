@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(forAll i : rows . (row_sums[i]=(sum j : cols . x[i, j]))),
+(forAll j : cols . (col_sums[j]=(sum i : rows . x[i, j])))

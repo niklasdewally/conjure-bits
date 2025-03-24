@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(forAll i : range_ . ((sum(x[i,int(..)])=c) /\ (sum(x[int(..),i])=c))),
+(z=(sum i : range_ . (sum j : range_ . (x[i, j] * ((|(i - j)| * |(i - j)|))))))

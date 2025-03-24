@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+maximising z
+such that
+(z=(sum i : int(1..num_entries) . (x[i] * values[i]))),
+(((sum i : int(1..num_entries) . (x[i] * weights[i])))<=n)

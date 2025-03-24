@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(forAll i : countries . (forAll j : countries . ((((i<j) /\ (connections[i, j]=1))) -> (color[i]!=color[j])))),
+(color[1]=1)

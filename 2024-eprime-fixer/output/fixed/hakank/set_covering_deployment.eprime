@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+minimising c_armies
+such that
+(c_armies=(sum i : int(1..n) . (X[i] + Y[i]))),
+(forAll i : int(1..n) . (Y[i]<=X[i])),
+(forAll i : int(1..n) . (1<=((X[i] + ((sum j : int(1..n) . (((m[i, j]=1)) * Y[j])))))))

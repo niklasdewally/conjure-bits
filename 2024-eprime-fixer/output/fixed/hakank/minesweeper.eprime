@@ -1,0 +1,3 @@
+language ESSENCE' 1.0
+such that
+(forAll i : rows . (forAll j : cols . (((((X<game[i, j]) -> (mines[i, j]=0))) /\ (((mines[i, j]=1) -> (game[i, j]=X)))) /\ (((X<game[i, j]) -> (game[i, j]=sum([mines[(i + a), (j + b)]|a : AB, b : AB, (((((0<(i + a)) /\ (0<(j + b))) /\ ((i + a)<=r)) /\ ((j + b)<=c))) ;int(1..)])))))))

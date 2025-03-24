@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+minimising z
+such that
+(z=(sum i : int(1..time_slots) . x[i])),
+(4=(x[time_slots] + x[1])),
+(forAll i : int(1..(time_slots - 1)) . (demands[i]<=(x[i] + x[(i + 1)])))

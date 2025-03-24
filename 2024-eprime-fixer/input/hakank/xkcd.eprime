@@ -1,0 +1,28 @@
+$
+$ XKCD problem (knapsack) in Essence'.
+$
+$ http://xkcd.com/287/
+$
+$ Some amount (or none) of each dish should be ordered to give a total 
+$ of exact 15.05
+$
+$ Compare with the following models:
+$ * Comet: http://www.hakank.org/comet/xkcd.co
+$ * ECLiPSE: http://www.hakank.org/eclipse/xkcd.ecl
+$ * Gecode: http://www.hakank.org/gecode/xkcd.cpp
+$ * Gecode/R: http://www.hakank.org/gecode_r/xkcd.rb
+$ * MiniZinc: http://www.hakank.org/minizinc/xkcd.mzn
+$
+$  Model created by Hakan Kjellerstrand, hakank@gmail.com
+$  See also my Essence'/Tailor page: http://www.hakank.org/savile_row/
+$
+language ESSENCE' 1.0
+
+letting n be 6
+letting price = [215, 275, 335, 355, 420, 580]
+letting total be 1505
+
+find x : matrix indexed by [int(1..n)] of int(0..100000)
+
+such that
+  total = sum i : int(1..n) . price[i]*x[i]

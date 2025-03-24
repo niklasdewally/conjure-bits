@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(forAll i : int(1..num_blanks) . (x[blanks[((2 * ((i - 1))) + 1)], blanks[((2 * ((i - 1))) + 2)]]=0)),
+(forAll p : int(1..num_p) . ((((sum([x[P[p, ((2 * ((i - 1))) + 1)], P[p, ((2 * ((i - 1))) + 2)]]|i : int(1..num_hints), ((0<P[p, ((2 * ((i - 1))) + 1)])) ;int(1..)])=P[p, ((2 * num_hints) + 1)])) /\ allDiff([x[P[p, ((2 * ((i - 1))) + 1)], P[p, ((2 * ((i - 1))) + 2)]]|i : int(1..num_hints), ((0<P[p, ((2 * ((i - 1))) + 1)])) ;int(1..)])) /\ (forAll i : int(1..num_hints) . ((0<P[p, ((2 * ((i - 1))) + 1)]) -> (0<x[P[p, ((2 * ((i - 1))) + 1)], P[p, ((2 * ((i - 1))) + 2)]])))))

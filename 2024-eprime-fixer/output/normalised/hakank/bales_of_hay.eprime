@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+(forAll w : int(1..10) . ((b1[w]<b2[w]) /\ ((bales[b1[w]] + bales[b2[w]])=weights[w]))),
+(forAll w : int(1..(n - 1)) . (bales[w]<=bales[(w + 1)]))

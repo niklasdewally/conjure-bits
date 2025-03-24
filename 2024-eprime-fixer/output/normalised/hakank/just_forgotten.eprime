@@ -1,0 +1,4 @@
+language ESSENCE' 1.0
+such that
+allDiff(x),
+(forAll r : int(1..rows) . (4=(sum c : int(1..cols) . (x[c]=a[r, c]))))

@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+such that
+allDiff(x),
+allDiff([(x[i] + i)|i : dom, () ;int(1..)]),
+allDiff([(x[i] - i)|i : dom, () ;int(1..)])

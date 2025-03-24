@@ -1,0 +1,21 @@
+language ESSENCE' 1.0
+such that
+allDiff(animal),
+allDiff(colour),
+allDiff(drink),
+allDiff(nation),
+allDiff(smoke),
+(nation[English]=colour[Red]),
+(nation[Spanish]=animal[Dog]),
+(drink[Coffee]=colour[Green]),
+(nation[Ukrainian]=drink[Tea]),
+(colour[Green]=(colour[Ivory] + 1)),
+(smoke[OldGold]=animal[Snails]),
+(smoke[Kools]=colour[Yellow]),
+(drink[Milk]=2),
+(nation[Norwegian]=0),
+(|(smoke[Chesterfields] - animal[Fox])|=1),
+(|(smoke[Kools] - animal[Horse])|=1),
+(smoke[LuckyStrike]=drink[OrangeJuice]),
+(nation[Japanese]=smoke[Parliaments]),
+(|(nation[Norwegian] - colour[Blue])|=1)

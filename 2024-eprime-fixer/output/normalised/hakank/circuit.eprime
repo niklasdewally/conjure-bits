@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+such that
+allDiff(x),
+allDiff(z),
+(z[1]=x[1]),
+(forAll i : int(2..n) . (z[i]=x[z[(i - 1)]])),
+(forAll i : int(1..(n - 1)) . (z[i]!=1)),
+(z[n]=1)

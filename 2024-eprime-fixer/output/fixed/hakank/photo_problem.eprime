@@ -1,0 +1,5 @@
+language ESSENCE' 1.0
+maximising z
+such that
+allDiff(positions),
+(z=sum([(|(positions[i] - positions[j])|=1)|i : range_, j : range_, ((0<preferences[i, j])) ;int(1..)]))

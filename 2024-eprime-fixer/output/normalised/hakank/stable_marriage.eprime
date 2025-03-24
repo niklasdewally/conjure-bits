@@ -1,0 +1,6 @@
+language ESSENCE' 1.0
+such that
+(forAll m : people . (husband[wife[m]]=m)),
+(forAll w : people . (wife[husband[w]]=w)),
+(forAll m : people . (forAll o : people . (((rankMen[m, o]<rankMen[m, wife[m]])) -> (rankWomen[o, husband[o]]<rankWomen[o, m])))),
+(forAll w : people . (forAll o : people . (((rankWomen[w, o]<rankWomen[w, husband[w]])) -> (rankMen[o, wife[o]]<rankMen[o, w]))))

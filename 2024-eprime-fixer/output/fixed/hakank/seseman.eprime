@@ -1,0 +1,7 @@
+language ESSENCE' 1.0
+such that
+(((a + b) + c)=rowsum),
+(((a + d) + f)=rowsum),
+(((c + e) + h)=rowsum),
+(((f + g) + h)=rowsum),
+((((((((a + b) + c) + d) + e) + f) + g) + h)=total_sum)

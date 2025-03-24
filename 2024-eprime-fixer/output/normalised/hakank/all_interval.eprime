@@ -1,0 +1,7 @@
+language ESSENCE' 1.0
+such that
+allDiff(diffs),
+allDiff(x),
+(forAll k : range2 . (diffs[k]=|(x[(k + 1)] - x[k])|)),
+(x[1]<x[(n - 1)]),
+(diffs[1]<diffs[2])

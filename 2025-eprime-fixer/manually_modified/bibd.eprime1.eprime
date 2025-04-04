@@ -1,0 +1,24 @@
+$$ param file: savile-row/test-instances/bibd.eprime1.param
+
+language ESSENCE' 1.0
+letting b be 7
+letting v be 7
+letting r be 3
+letting k be 3
+letting  l be 1
+
+$$ model file: savile-row/test-instances/bibd.eprime
+
+$ given v : int(..)
+$ given b : int(..)
+$ given r : int(..)
+$ given k : int(..)
+$ given l : int(..)
+find bibd : matrix indexed by [int(1..v),int(1..b)] of bool
+such that
+(forAll block : int(1..b) . (((sum object : int(1..v) . bibd[object, block]))=k)),
+(forAll object : int(1..v) . (((sum block : int(1..b) . bibd[object, block]))=r)),
+(forAll object1 : int(1..v) . (forAll object2 : int(1..v) . (((object1<object2)) -> ((((sum block : int(1..b) . (bibd[object1, block] * bibd[object2, block])))=l))))),
+
+$(forAll row : int(1..(v - 1)) . (bibd[row,..] <=lex bibd[(row + 1),..])),
+$(forAll col : int(1..(b - 1)) . (bibd[..,col] <=lex bibd[..,(col + 1)]))

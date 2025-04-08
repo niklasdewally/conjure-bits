@@ -2,7 +2,7 @@ language ESSENCE' 1.0
 
 $ Partition the set {1..N} into two classes
 
-letting n be 300
+letting n be 150
 
 find class : matrix indexed by [int(1..n)] of int(1..2)
  

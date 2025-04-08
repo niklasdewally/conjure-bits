@@ -1,0 +1,2 @@
+command,mean,stddev,median,user,system,min,max
+nolimit savilerow -O0 -run-solver models_with_params/forAll_100.eprime,6.39019771652,0.38547113399835287,6.18752791392,8.6621807,0.53203428,6.02355486492,6.85572929192

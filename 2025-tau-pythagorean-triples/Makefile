@@ -1,5 +1,5 @@
 MODELS = $(shell find models/ -iname '*.eprime')
-NS = 10 100 200 300 400
+NS = 100 200 300
 
 $(foreach N,$(NS),$(eval OUTPUT_MODELS+=$(patsubst models/%.eprime,models_with_params/%_$(N).eprime,$(MODELS))))
 

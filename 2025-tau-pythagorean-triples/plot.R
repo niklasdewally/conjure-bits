@@ -26,7 +26,7 @@ ggplot(data) +
   theme_minimal()
 
 ggplot(data) + 
-  aes(x=`n`, y=log(`mean`),group=`group`,color=`Program`,linetype=`Model`) + 
+  aes(x=`n`, y=log(`mean`,10),group=`group`,color=`Program`,linetype=`Model`) + 
   geom_path() + 
   geom_point() + 
   xlab('n') + 
@@ -35,7 +35,7 @@ ggplot(data) +
   theme_minimal()
 
 ggplot(data) + 
-  aes(x=`n`, y=log(`mean`),group=`Program`,color=`Program`) + 
+  aes(x=`n`, y=log(`mean`,10),group=`Program`,color=`Program`) + 
   geom_path() + 
   geom_point() + 
   xlab('n') + 
@@ -43,7 +43,7 @@ ggplot(data) +
   ggtitle('Boolean Pythagorean Triples Problem: Time to First Solution') + facet_wrap(~Model) + theme_linedraw()
 
 ggplot(data) + 
-  aes(x=`n`, y=log(`mean`),group=`Model`,color=`Program`,linetype=`Model`) + 
+  aes(x=`n`, y=log(`mean`,10),group=`Model`,color=`Program`,linetype=`Model`) + 
   geom_path() + 
   geom_point() + 
   xlab('n') + 

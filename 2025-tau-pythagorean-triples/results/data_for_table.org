@@ -1,0 +1,18 @@
+| n   | model                | command      | mean                | stddev                |
+|-----+----------------------+--------------+---------------------+-----------------------|
+| 025 | in_return_expression | savilerow    | 0.3274568663333334  | 0.006274749047791994  |
+| 025 | in_return_expression | conjureoxide | 6.2160661059999995  | 0.06041399759600474   |
+| 025 | inside_comprehension | savilerow    | 0.20142612846666666 | 0.007785384766914759  |
+| 025 | inside_comprehension | conjureoxide | 6.174639466466666   | 0.01573474888896477   |
+| 050 | in_return_expression | savilerow    | 1.96160585334       | 0.02816965125992759   |
+| 050 | in_return_expression | conjureoxide | 7.604982803673333   | 0.0676543718045734    |
+| 050 | inside_comprehension | savilerow    | 0.35744539395999997 | 0.0025961300130238237 |
+| 050 | inside_comprehension | conjureoxide | 7.7006563512933335  | 0.0736227776372055    |
+| 075 | in_return_expression | savilerow    | 22.74008507522667   | 0.23723824942899638   |
+| 075 | in_return_expression | conjureoxide | 11.41278164356      | 0.07483468200977997   |
+| 075 | inside_comprehension | savilerow    | 0.7042214866533335  | 0.01112084443548156   |
+| 075 | inside_comprehension | conjureoxide | 11.317257736986669  | 0.006919133478509419  |
+| 100 | in_return_expression | savilerow    | 124.41612152726667  | 1.0401814418077842    |
+| 100 | in_return_expression | conjureoxide | 17.138121214266665  | 0.10731884784584486   |
+| 100 | inside_comprehension | savilerow    | 1.3248877893666668  | 0.023802281264125303  |
+| 100 | inside_comprehension | conjureoxide | 16.891602152033332  | 0.05217493033524822   |

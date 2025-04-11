@@ -1,5 +1,8 @@
 Fri 04/April/2025
 
+An experiment to do with where we put the guard in a comprehension, for my dissertation.
+
+
 
 Essence Prime models and benchmarks for the Pythagorean Triples theorem, as discussed by
 Terence Tau in his article on [Machine-Assisted Proof](https://www.ams.org/journals/notices/202501/rnoti-p6.pdf).
@@ -20,3 +23,14 @@ comprehension via pruning. I hypothesise that Conjure Oxide will be better at
 this, as it calls Minion to unwrap the comprehensions (using constraint
 propogation), while Savile Row only uses Forward Checking.
 
+
+## Contents 
+
+```
+Makefile            - substitute parameters into the models, generates models_with_params/
+models/             - input models
+models_with_params/ - models
+results/            - the result used
+scripts/            - scripts for plotting, cleanup
+bench.sh            - runs the benchmarks
+```

@@ -1,3 +1,4 @@
 *.log
 *.eprime.*
 *.json
+models_with_params/
